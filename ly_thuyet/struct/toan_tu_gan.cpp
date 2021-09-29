@@ -38,11 +38,24 @@ void xuat_1_sinh_vien(sinh_vien sv)
 
 int main()
 {
-    sinh_vien sv;
-    std::cout << "\n\n\t\tNHAP THONG TIN 1 SINH VIEN\n";
-    nhap_1_sinh_vien(sv);
+    sinh_vien x;
+    sinh_vien y;
+    std::cout << "\n\n\t\tNHAP THONG TIN 1 SINH VIEN x\n";
+    nhap_1_sinh_vien(x);
 
-    std::cout << "\n\n\t\tXUAT THONG TIN 1 SINH VIEN\n";
-    xuat_1_sinh_vien(sv);
+    // Cach 1
+    // y = x;
+
+    // Cach 2
+    y.ho_ten = x.ho_ten;
+    y.mssv = x.mssv;
+    y.diem = x.diem;
+    y.tuoi = x.tuoi;
+
+    std::cout << "\n\n\t\tTHONG TIN 1 SINH VIEN x\n";
+    xuat_1_sinh_vien(x);
+
+    std::cout << "\n\n\t\tTHONG TIN 1 SINH VIEN y\n";
+    xuat_1_sinh_vien(y);
     return 0;
 }
