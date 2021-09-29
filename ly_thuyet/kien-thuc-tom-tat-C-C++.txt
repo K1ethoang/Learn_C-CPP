@@ -543,6 +543,17 @@ sinh_vien y;
 
 y = x; // Gán tất cả thông tin hiện có trong sinh viên x cho sinh viên y
 
+NẾU TRONG STRUCT SINH_VIEN ĐANG CHỨA 1 BIẾN CON TRỎ THÌ KHÔNG DÙNG ĐƯỢC TOÁN TỬ GÁN ĐỂ GÁN GIÁ TRỊ TỪ STRUCT NÀY SANG TRUCT KIA 
+
+Cách 2: Gán từng thành phần của struct này cho từng thành phần tương ứng của struct kia 
+sinh_vien x;
+sinh_vien y;
+
+y.ho_ten  = x.ho_ten;
+y.diem = x.diem;
+
+
+
 
 
 ------------------- KIỂU DỮ LIỆU UNION -------------------
