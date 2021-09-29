@@ -1,0 +1,554 @@
+			[------------------- CÁU TRÚC CƠ BẢN CỦA MỌI CT C/C++ -------------------] 
+
+	#include <stdio.h>					#include <iostream>			
+	int main()						int main()
+	{						{
+		int n; //Khai báo biến n				int n; // Khai báo biến n
+		printf("In ra màn hình") //In ra màn hình		std::cout<<("<text>")
+		scanf("%d", &n) //Nhập dữ liệu vào biến n		std::cin >> n; // 
+		return 0;					return 0;
+	}						}
+
+
+
+				[------------------- KÝ TỰ ĐẶC BIỆT -------------------] 
+
+	\n	Xuống dòng
+	\t	Tab khoảng cách ngang
+	\r	Nhảy về đầu hàng
+	\a	Tạo tiếng kêu
+	\\	In ký tự  \
+	\"	In ký tự  "
+	\'	In ký tự '
+	%%	In ký tự % 
+
+
+
+				[------------------- ĐẶC TẢ -------------------]
+
+	%d		int			định dạng kiểu số nguyên và tham chiếu dữ liệu hệ thập phân 
+	%i 		int			định dạng kiểu số nguyên và tham chiếu dữ liệu hệ thập lục phân
+	%f		float			định dạng kiểu số thực
+	%c 		char			định dạng kiểu ký tự
+	%s		character string 	   	định dạng kiểu chuỗi ký tự
+	%lf		double			định dạng kiểu số thực double 
+	%ld		long			định dạng cho một số kiểu long 
+	%Lf		long double		định dạng cho một số kiểu long double 
+
+
+
+				[------------------- ÉP KIỂU -------------------]
+
+	Loại 1: Nới rộng (widening) (Mở rộng vùng nhớ)
+		short -> int -> long -> float -> double
+		VD: long x;
+			float y = x;	
+	Loại  2: Thu hẹp (narrowing) (Thu hẹp vùng nhớ)
+		double -> float -> long -> int -> short
+		VD: float y;
+			long x = (long)y;
+
+
+
+				[------------------- THƯ VIỆN MATH VÀ HÀM CƠ BẢN -------------------] 
+
+	ceil(<variable>) : Hàm làm tròn lên
+	floor(<variable>) : Hàm làm tròn xuống
+	sqrt(<variable>) : Hàm căn bậc hai
+	pow(<variable>, số mũ) : Hàm luỹ thừa (mũ)
+	abs(<variable>) : Hàm trị tuyệt đối
+	asin(<variable>) : Hàm Arc Sin, giá trị radian
+	acos(<variable>) : Hàm Arc Cos, giá trị radian
+	atan(<variable>) : Hàm Arc Tan, giá trị radian
+	sin(<variable>) : Hàm Sin, giá trị radian
+	cos(<variable>) : Hàm Cos, giá trị radian
+	tan(<variable>) : Hàm Tan, giá trị radian
+	fmax(a, b) : Tìm giá trị lớn nhất giữa a và b
+	fmin(a, b) : Tìm giá trị nhỏ nhất giữa a và b
+
+
+
+				[------------------- CẤU TRÚC LỆNH RẼ NHÁNH -------------------] 
+
++ Câu lệnh If:
+		if (<Điều kiện>) {
+			<Khối lệnh>
+		}
+
++ Câu lệnh Switch Case
+		switch (<variable>) {
+ 				case <Điều kiện 1>:
+ 			    	// khối lệnh
+ 			     	break;
+				...
+ 				case <Điều kiện n>:
+ 			     	// khối lệnh
+ 			     	break;
+
+ 				default:
+ 			    	// Không có điều kiện nào phù hợp, mặc định thực hiện lệnh này
+		}			
+
++ Cấu Trúc Lệnh Vòng Lặp:
+	Vòng For:
+		For (Điểm xuất phát; Điều kiện dừng; Bước nhảy) {
+			<Khối lệnh>
+		}
+	
+	Vòng While:
+		While (<Điều Kiện>) {
+			<Khối lệnh>
+		}
+
+	Vòng Do While:
+		do {
+			<Khối lệnh>
+		} while (<Điều kiện để tiếp tục thực hiện lệnh do>)
+
+				[------------------- TOÁN TỬ LOGIC -------------------]
+
+	!  : Toán tử (not) "phủ định"
+	&& : Toán tử (and) "và"
+	|| : Toán tử (or) "hoặc"
+
+
+
+				[------------------- LỆNH GOTO VÀ CONTINUE -------------------] 
+
++ Lệnh goto: dùng để cung cấp bước nhảy vô điều kiện từ goto đến một câu lệnh có gắn nhãn. Câu lệnh có gắn nhãn có cấu trúc: label:
+
++ Lệnh continue: Là câu lệnh mà khi gặp nó chương trình sẽ bỏ qua những câu lệnh đứng dưới nó trong một khối
+				    
+
+
+				[------------------- TRONG LẬP TRÌNH C -------------------]
+
++ Lý Thuyết:
+	Hàm định nghĩa sẳn: printf(), scanf(), sqrt(), abs()...
+	Hàm tự định nghĩa: main()... cách định nghĩa một hàm 
+		<kiểu dữ liệu trả về> <tên hàm>(<các tham số>) {
+			phần thân hàm chứa khối lệnh
+			return; //trả về giá trị nếu có (kiểu void sẽ không cần return)
+		}
+
+
+
+[------------------- KHÁI NIỆM VỀ THAM CHIẾU VÀ THAM TRỊ -------------------]
+
+------------------- CON TRỎ  -------------------
+
+------------------- Mảng Một Chiều -------------------
+
+				[------------------- MẢNG HAI CHIỀU -------------------]
+
+* CÚ PHÁP:        <kiểu dữ liệu> <Tên mảng> [<Kích thước dòng>][<Kích thước cột>]
+VD:
+int arr[2][3]: khai  báo mảng 2 chiều số nguyên có tối đa 2 dòng và 3 cột, chứa tối đa 20 phần tử
+
+MẢNG 2 CHIỀU CÓ SỐ DÒNG = SỐ CỘT => MA TRẬN VUÔNG
++ Đường chéo chính: Là đường chéo xuất phát từ góc trên bên trái đến góc dưới bên phải.
++ Đường chéo phụ: Là đường chéo xuất phát từ góc trên bên phải đến góc dưới bên trái.
+VD: int a[4][4]
++ Các phần tử nằm trên đường chéo chính: a[0][0], a[1][1], a[2][2], a[3][3].
+	row = colum
++ Các phần tử nằm trên đường chéo phụ: a[0][3], a[1][2], a[2][1], a[3][0].
+	row tăng - column giảm
+
+
+
+------------------- CẤP PHÁT ĐỘNG  ------------------- 
+
+
+
+				[------------------- CHUỖI KÍ TỰ  -------------------]
+
+Trong ngôn ngữ lập trình C/C++ không có khái niệm kiểu dữ liệu chuỗi
++ Bên C: 
+Char: lưu 1 kí tự 
+Chuỗi: là tập hợp các kí tự - char
++Bên C++:
+Lớp string: hỗ trợ thao tác trên chuỗi
+Thư viện: <string>
+
+======
+
+Kí tự: là các chữ cái riêng lẽ với nhau và được đặt trong dấu nháy ĐƠN.
+VD:  'g', 'k'
+Chuỗi: là tập hợp các kí tự và được đặt trong dấu nháy KÉP.
+VD:  "lap trinh" => 'l' , 'a', 'p',' ', 't', 'r', 'i', 'n', 'h', '\0' .
+
+
+	======== CHUỖI BÊN NGÔN NGỮ C ======
+
+Chuỗi là tập hợp 1 hoặc nhiều kí tự lại với nhau.
+===> Bản chất: là mảng 1 chiều các kí tự - char
+- Mảng số nguyên: int a[100];
+Khai báo: 
+char HoTen[30]; // khai báo mảng kí tự chứa 29 kí tự - chừa ra ô nhớ cuối cùng chứa kí tự '\0' - Kí tự kết thúc chuỗi.
+
+    // CACH 1: Khai báo chuỗi
+    char ho_ten[30]; // * Khai báo chuỗi hoten chứa 29 kí tự, dành ra 1 ô nhớ cuối để chứ kí tự '\0'
+    *** // CÁCH 2: Khai báo chuỗi nhưng cho nó giá trị mặc định ban đầu là 1 cái chuỗi
+    char mon_hoc[30] = "Ki thuat lap trinh"; // * Tự động thêm kí tự \0 vào cuối chuỗi
+    // CÁCH 3: Khai báo chuỗi nhưng cho nó giá trị mặc định ban đầu là 1 cái chuỗi và tự động xác định độ dài chuỗi
+    char ma_so[] = "GK270803";
+
+	============ XUẤT CHUỖI ==========
+    // Cách 1: dùng lệnh printf("đặc tả: %s", chuỗi cần xuất);
+    printf("\nChuoi nhan duoc: %s", mon_hoc);
+
+    // Cách 2: dùng hàm mà ngôn ngữ C hỗ trợ chuyền dành đẻ xuất chuỗi
+    // puts(mon_hoc);
+
+	============ NHẬP CHUỖI ==========
+Cơ chế nhập giá trị cho biến: khi chúng ta nhập cái gì đó từ bàn phím thì cái gì đó sẽ được lưu dưới bộ nhớ đệm và chương trình sẽ lấy dữ liệu từ bộ nhớ đệm đó gán đưa vào cho biến.
+* CÁCH 1 *
+Dùng lệnh scanf()
+- Nhưng scanf(): không nhận kí tự khoảng trắng và kí tự xuống dòng
+* CÁCH 2 *
+Dùng hàm gets(<chuỗi cần nhập>)
+- Nhưng hàm gets(): không nhận kí tự xuống dòng ('\n')
+
+	============ LỖI KHI NHẬP CHUỖI =========
+
+#include <stdio.h>
+#include <conio.h>
+/* Nhap vao ho ten va nam sinh cua sinh vien */
+int main()
+{
+    char ho_ten[30];
+    int nam_sinh;
+
+    printf("\nNhap nam sinh cua may nua: ");
+    scanf("%d", &nam_sinh); // <=> C++: std::cin >> nam_sinh
+    printf("\nNhap ho va ten cua may: ");
+    gets(ho_ten);
+
+    printf("\nHo ten may: %s", ho_ten);
+    printf("\nNam sinh may: %d", nam_sinh);
+
+    getch();
+    return 0;
+}
+
+	============= CÁCH KHẮC PHỤC ============
+Trước khi nhập chuỗi - chúng ta sẽ đi xóa bộ nhớ đệm 
+Bên C: fflush(stdin);
+Bên C++: std::cin.ignore();
+
+	============ CÁC HÀM CHUỖI =========
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+1. TÍNH ĐỘ DÀI: 				** strlen() **
+- Đếm số lượng kí tự có trong chuỗi (trừ kí tự '\0' - kí tự kết thúc chuỗi)
+**Cú Pháp: strlen(<chuỗi cần tính>)
+	---- Tự xây dựng ----
+int STRLEN(char s[])
+{
+    // todo cach 1: dung while lap vo tan den khi nao gap ki tu '\0' thi dung.
+    // int i = 0;
+    // while (true)
+    // {
+    //     if (s[i] == '\0')
+    //     {
+    //         return i;
+    //     }
+    //     i++;
+    // }
+
+    // todo cach 2: dung for
+    for (int i = 0;; i++)
+    {
+        if (s[i] == '\0')
+        {
+            return i;
+        }
+    }
+}
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+2. SAO CHÉP: 				** strcpy() **
+- Sao chép chuỗi nguồn sang cho chuỗi desk
+**Cú Pháp: strcpy(<chuỗi desk>, <chuỗi nguồn>)
+	---- Tự xây dựng ----
+void STRCPY(char s2[], char s1[])
+{
+    for (int i = 0; i < strlen(s1); i++)
+    {
+        s2[i] = s1[i];
+    }
+    s2[strlen(s1)] = '\0'; // Them ki tu '\0' vao cuoi chuoi
+}
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+3. SAO CHÉP NHƯNG TIẾT KIỆM BỘ NHỚ HƠN: 		** strdup() **	
+- Hàm strdup() sẽ yêu cầu bộ nhớ máy tính cấp phát ra 1 vùng nhớ chứa <chuỗi> sau đó con trỏ s sẽ chỏ đến vùng nhớ vừa được cấp phát để quản lí chuỗi đó.
+- Sau khi cấp phát phải trả lại vùng nhớ cho Hệ Điều Hành: 
+	+ Bên C: free(s)   // Thuộc thư viện <stdlib.h>
+	+ Bên C++: delete s;  
+** Cú Pháp:  char *s = strdup(<chuỗi>)
+	---- Tự xây dựng ----
+char *STRDUP(char s1[]) // * char * de tra ve chuoi
+{
+    // Cap phat vung nho cho chuoi s2 de sao chep cac ki tu cua chuoi s1
+    char *s2 = (char *)malloc(strlen(s1) + 1);
+    for (int i = 0; i < strlen(s1); i++)
+    {
+        s2[i] = s1[i];
+    }
+    s2[strlen(s1)] = '\0';
+    return s2;
+    free(s2);
+}
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+4. CHUYỂN THÀNH CHUỖI IN THƯỜNG		** strlwr() **
+- Tất cả các kí tự trên bàn phím đều được lưu dưới mã ASCII - mã ASCII là mã hệ thập phân - hệ 10. Nói chung là các kí tự sẽ được lưu bằng 1 mã số nguyên (ASCII).
+	A: 65 -> Z: 90	;	a: 97 -> z: 122
+LƯU Ý: mã ASCII của kí tự in thường luôn lớn hơn mã ASCII của kí tự in hoa là ( 32 đơn vị).
+
+**Cú Pháp: strlwr(<chuỗi >)
+
+	----- Tự xây dựng -----
+
+void STRLWR(char s[])
+{
+    for (int i = 0; i < strlen(s); i++)
+    {
+        if ('A' <= s[i] && s[i] < +'Z')
+        {
+            s[i] += 32;
+        }
+    }
+}
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+5. CHUỖI IN HOA:			** strupr() ** 			Ngược lại với in thường ở trên |^|
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+6. ĐẢO CHUỖI: 			** strrev() **
+**Cú Pháp: strrev(<chuỗi>);
+VD: Chuỗi "1 2 3 4 5" --> "5 4 3 2 1" 
+s[0] = '1' sau khi đảo s[4] = '1'
+s[1] = '2' sau khi đảo s[3] = '2'
+s[2] = '3' sau khi đảo s[2] = '3'
+s[3] = '4' sau khi đảo s[1] = '4'
+s[4] = '5' sau khi đảo s[0] = '5'
+
+Quy Tắc: Hoán vị 2 kí tự cho nhau: s[i] hoán vị s[độ dài - i - 1]
+Hoán vị cặp kí tự trong đoạn: 0 đến (độ dài / 2 ) - 1
+"1 2 3 4 5" ==> Độ dài 5: ==> 0 đến (độ dài / 2) - 1: 1  
+	----- Tự Xây Dựng -----
+void hoan_vi(char &x, char &y)
+{
+    char temp = x;
+    x = y;
+    y = temp;
+}
+
+void STRREV(char s[])
+{
+    char temp;
+    for (int i = 0; i < (strlen(s) / 2); i++)
+    {
+        hoan_vi(s[i], s[strlen(s) - i - 1]);
+    }
+}
+
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ Nguyên tắc so sánh 2 chuỗi: 
+
+VD: so sánh 2 chuỗi s1, s2
+- Lấy từng kí tự của chuỗi s1 so sánh với từng của chuỗi s2 - nếu phát hiện sự khác biệt thì lập tức kết luận 
++ Kí tự s1 > kí tự s2 
+==> Chuỗi s1 < chuỗi s2 
++ Kí tự s2 < kí tự s1 
+==> Chuỗi s1 < chuỗi s2 
+- Nếu kí tự s1 và s2 bằng nhau thì tiếp tục so sánh đến khi nào gặp sự khác biệt hoặc kiểm tra hết tất cả các kí tự của 2 chuỗi mà vẫn không thấy sự khác biệt thì 2 chuỗi = nhau.
+- So sánh 2 kí tự là đang so sánh trên mã ASCII của nó - mã ASCII là 1 mã số nguyên.
+a: 97			A: 65
+b: 98			B: 66
+...			...
+z: 122			Z: 90
+
+
+7. SO SÁNH 2 CHUỖI có PHÂN BIỆT KÍ TỰ HOA VÀ KÍ TỰ THƯỜNG 		** strcmp() **
+**Cú Pháp: strcmp(<chuỗi 1>,<chuỗi 2>)
+- là hàm có giá trị trả về
+	+ > 0  	==> s1  >  s2
+	+ < 0 	==> s2  <  s1
+	+ = 0 	==> s1 == s2
+VD: 
+s1 = "a";
+s2 = "LAP TRINH";
+==> s1 > s2 vì ( ASCII của 'a' > ASCII của 'L');
+	----- Tự xây dựng -----
+int STRCMP(char s1[], char s2[])
+{
+    int do_dai_min = strlen(s1) < strlen(s2) ? strlen(s1) : strlen(s2);
+    for (int i = 0; i < do_dai_min; i++)
+    {
+        if (s1[i] > s2[i])
+        {
+            return 1;
+        }
+        else if (s1[i] < s2[i])
+        {
+            return -1;
+        }
+    }
+    // * Neu sau khi thoat khoi vong lap for ma van chua phat hien su khac biet thi kiem tra do dai
+    // * Neu do dai cua thang nao dai hon thi thang do lon hon
+    if (strlen(s1) > strlen(s2))
+    {
+        return 1;
+    }
+    else if (strlen(s1) < strlen(s2))
+    {
+        return -1;
+    }
+    else
+    {
+        return 0; // * 2 chuoi co do dai = nhau
+    }
+}
+
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+9. Chuyển 1 chuỗi số thành 1 số nguyên
+VD: s = "123"
+===> s = 123
+"123" = ('1' - 48) * 10^2 + ('2' - 48) * 10^1 + ('3' - 48) * 10^0  <=> 1 * 10^2  + 2 * 10^1 + 3 * 10^0 = 123
+
++ 1 kí tự số mà muốn chuyển sang 1 số nguyên 
+==> Kí tự số đó -48
+
++ 1 chữ số nguyên chuyển sang 1 kí tự
+==> Chữ số nguyên +48
+
+	======== CHUỖI BÊN NGÔN NGỮ C++ ======
+- Được hỗ trợ bởi class string 
+* Cú pháp: <kiểu dữ liệu> <tên>;
+VD: std::string str;
+Dùng thư viện <string> // Khai báo thư viện dùng các hàm xử lí  
+
+
+	======== CÁC HÀM STRING TRONG C++ =========
+#include <string>
+
+string str;
+
+==== XÓA ====
+str.erase(str.begin() + 3): xóa 1 kí tự tại vị trí 3
+str.erase(x, y); // Xóa đi y ký tự bắt đầu tại vị trí x.
+str.erase(str.begin() + x); // Xóa đi ký tự tại vị trí x.
+str.erase(str.begin() + x, str.begin() + y); // Xóa đi các ký tự từ chỉ số x đến chỉ số y - 1
+
+==== THÊM ====
+str.insert(str.begin() + 3, 'y'): thêm 1 kí tự 'y' tại vị trí số 3
+str.insert(x, "y", z); // Thêm z ký tự từ chuỗi y vào vị trí x. Nếu z có độ dài lớn hơn độ dài chuỗi y thì tiếp tục thêm vào 1 khoảng trắng và sau đó lại bắt đầu thêm vào các ký tự của chuỗi từ vị trí 0 --> sao cho đủ z thì thôi.
+
+str.insert(x, y, 'z'); // Thêm y lần ký tự z vào vị trí x.
+str.insert(str.begin() + x, 'y'); // Thêm ký tự y vào vị trí x.
+str.insert(str.begin() + x, y, 'z'); // Thêm y lần ký tự z vào vị trí x.
+str.insert(str.begin() + x, str2.begin() + y, str2.begin() + z); // Thêm chuỗi ký tự con của chuỗi str2 bắt đầu từ vị trí y cho đến vị trí z - 1 vào vị trí x trong chuỗi str.
+
+==== LẤY CHUỖI CON ====
+string str2 = str.substr(x, y); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x và lấy ra y ký tự.
+string str2 = str.substr(x); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x cho đến cuối chuỗi.
+
+==== TÌM KIẾM ====
+int found = str.find('x');
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của ký tự x trong chuỗi str.
+else => Không tồn tại ký tự x trong chuỗi str. 
+
+int found = str.find("x");
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của chuỗi x trong chuỗi str.
+else => Không tồn tại chuỗi x trong chuỗi str. 
+
+int found = str.find("x", y, z);
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của chuỗi x lấy ra z ký tự và sẽ bắt đầu tìm kiếm từ vị trí y trong chuỗi str.
+else => Không tồn tại chuỗi x trong chuỗi str. 
+
+
+
+	[------------------- KĨ THUẬT CHIA TÁCH FILE (file.h và file.cpp)-------------------]
+Yêu Cầu:
+- Các bạn phải nắm vững các kiến thức cơ bản của lập trình C/C++
++ Câu lệnh điều kiện
++ Vòng lặp
++ Hàm
++ ...
+
+** Trong Chương Trình Sẽ Có 2 File : 
+1. File có đuôi .h - hay còn gọi là file thư viện
+- File thư viện do ngôn ngữ lập trình tạo ra sẵn - và chúng ta sẽ gọi lại để dùng 
++ stdio.h: file thư viện hỗ trợ việc nhập xuất chuẩn
++ conio.h: 
++ math.h: file thư viện hỗ trợ các hàm toán học : sqrt(), pow(), sin(), cos()...
++ string.h: file thư viện hỗ trợ các hàm thao tác trên chuỗi : strlen(), strcpy(),...
++ ........
+- File thư viện do người lập trình tạo nên
+==> Đáp ứng một số công việc nào đó cho người lập trình viên 
+
+ KẾT LUẬN: file.h sẽ là file chứa các KHAI BÁO của các hàm
+
+2. File có đuôi .cpp 
+==> File.cpp sẽ là file chứa các ĐỊNH NGHĨA của các hàm ở trong file.h 
+
+VD: 
+thuviencuatoi.h - file này chứa các khai báo hàm mà chúng ta sẽ dùng 
+- KHAI BÁO hàm kiểm tra số nguyên tố 
+bool kiem_tra_so_nguyen_to(int n);
+- KHAI BÁO hàm kiểm tra số hoàn thiện
+bool kiem_tra_so_hoan_thien(int n);
+- KHÁI BÁO hàm giải phương trình bậc 2
+void giai_phuong_trinh_bac_hai(float a, float b, float c);
+
+
+		[------------------- KIỂU DỮ LIỆU STRUCT  -------------------]
+struct: bản chất là 1 kiểu dữ liệu cho người lập trình định nghĩa
+STRUCT LÀ CƠ SỞ CỦA CLASS - LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG
+
+Đặt vấn đề: 
+- Kiểu số nguyên: chỉ lưu được số nguyên
+- Kiểu số thực: chỉ lưu được kiểu số thực 
+- Kiểu kí tự: chỉ lưu được kí tự 
+
+- Muốn lưu thông tin sinh viên:
++ Tên sinh viên: chuỗi
++ Mã số sinh viên: chuỗi
++ Điểm: số thực 
+Khai báo cấu trúc struct: 
+struct <tên biến cấu trúc>
+{
+	<kiểu dữ liệu thành phần 1> <tên thành phần 1>
+	<kiểu dữ liệu thành phần 2> <tên thành phần 2>
+	.........................
+};
+
+VD:
+// Khai báo cấu trúc 1 sinh viên
+struct sinh_vien
+{
+	string ho_ten;
+	string mssv;
+	float diem;
+};
+
+Truy xuất đến 1 thành phần trong struct
+<tên biến cấu trúc đích>.<tên thành phần cần truy xuất>
+VD: 
+sinh_vien x;
+x.mssv;
+...
+
+			[--------------- GÁN DỮ LIỆU KIỂU STRUCT -------------]
+Cách 1: Gán struct này cho struct kia thông qua toán tử gán
+sinh_vien x;
+sinh_vien y;
+
+y = x; // Gán tất cả thông tin hiện có trong sinh viên x cho sinh viên y
+
+
+
+------------------- KIỂU DỮ LIỆU UNION -------------------
+
+
+
+
+
+
