@@ -1,0 +1,41 @@
+ Bài 1: Nhập vào 1 chuỗi các kí tự in thường từ bàn phím. Bỏ hết tất cả các kí tự x (x là 1 kí tự in thường nhập từ bàn phím) dó vào chuỗi temp.
+Chú ý: không được dùng hàm có sẵn
+ 
+VD: 
+s = "ki thuat lap trinh"
+x: 'h'
+
+==> temp = "hh"	
+==========================================================================================
+Bài 2: Nhập vào 1 chuỗi từ bàn phím. Viết hàm chuẩn hóa chuỗi vừa nhập theo yêu cầu sau: 
++ Không tồn tại kí tự khoảng trắng ở đầu chuỗi
++ Không tồn tại kí tự khoảng trắng ở cuối chuỗi
+Chú Ý: Không được dùng thư viện string.h	
+
+VD: 
+s = "    ki thuat lap trinh       "
+===> Sau khi chuẩn hóa: s = "ki thuat lap trinh"													
+Bước 1: Viết hàm xóa 1 kí tự bất kì trong chuỗi 
+==========================================================================================
+Bài 3: Nhập vào 1 chuỗi số. Chuyển chuỗi số đó thành 1 số nguyên 
+VD: s = "123"
+===> s = 123
+
++ 1 kí tự muốn chuyển sang 1 số nguyên 
+==> Lấy kí tự số đó -48
++ 1 số nguyên chuyển sang 1 kí tự
+==> Lấy kí tự số đó +48
+
+
+
+
+
+
+
+
+
+
+
+
+
+										
