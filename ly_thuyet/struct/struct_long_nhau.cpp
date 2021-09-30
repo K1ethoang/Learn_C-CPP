@@ -1,48 +1,45 @@
 #include <iostream>
 
-struct sinh_vien
+// Nhap vao toa do 3 dinh cua 1 tam giac. Tinh do dai tung canh
+struct toa_do
 {
-    std::string ho_ten;
-    std::string mssv;
-    int tuoi;
-    float diem;
+    float x; // Toa do x
+    float y; // Toa do y
 };
 
-void nhap_1_sinh_vien(sinh_vien &sv)
+void nhap_toa_do(toa_do &td)
 {
-    std::cout << "\nNhap ho ten sinh vien: ";
-    fflush(stdin);
-    std::getline(std::cin, sv.ho_ten);
-
-    std::cout << "\nNhap ma so sinh vien: ";
-    fflush(stdin);
-    std::getline(std::cin, sv.mssv);
-
-    std::cout << "\nNhap tuoi: ";
-    std::cin >> sv.tuoi;
-
-    std::cout << "\nNhap diem: ";
-    std::cin >> sv.diem;
+    std::cout << "\nNhap vao diem x: ";
+    std::cin >> td.x;
+    std::cout << "\nNhap vao diem y: ";
+    std::cin >> td.y;
 }
 
-void xuat_1_sinh_vien(sinh_vien sv)
+void xuat_toa_do(toa_do td)
 {
-    std::cout << "\nHo ten sinh vien: " << sv.ho_ten;
-
-    std::cout << "\nMa so sinh vien: " << sv.mssv;
-
-    std::cout << "\nTuoi: " << sv.tuoi;
-
-    std::cout << "\nDiem: " << sv.diem;
+    std::cout << "(" << td.x << "; " << td.y << ")";
 }
 
 int main()
 {
-    sinh_vien sv;
-    std::cout << "\n\n\t\tNHAP THONG TIN 1 SINH VIEN\n";
-    nhap_1_sinh_vien(sv);
+    toa_do a;
+    toa_do b;
+    toa_do c;
 
-    std::cout << "\n\n\t\tXUAT THONG TIN 1 SINH VIEN\n";
-    xuat_1_sinh_vien(sv);
+    std::cout << "\n\n\t\tNHAP TOA DO DIEM A\n";
+    nhap_toa_do(a);
+    std::cout << "\n\n\t\tNHAP TOA DO DIEM B\n";
+    nhap_toa_do(b);
+    std::cout << "\n\n\t\tNHAP TOA DO DIEM C\n";
+    nhap_toa_do(c);
+
+    std::cout << "\n\n\t\tTOA DO DIEM A\n";
+    xuat_toa_do(a);
+    std::cout << "\n\n\t\tTOA DO DIEM B\n";
+    xuat_toa_do(b);
+    std::cout << "\n\n\t\tTOA DO DIEM C\n";
+    xuat_toa_do(c);
+
+    system("pause");
     return 0;
 }
