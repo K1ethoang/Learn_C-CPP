@@ -1,0 +1,28 @@
+Bài 3: Khai báo kiểu dữ liệu để biểu diễn thông tin của một sinh viên
+Biết rằng 1 sinh viên gồm những thông tin sau : 
+- Mã số sinh viên: chuỗi tối đa  20 kí tự
+- Họ tên sinh viên: chuỗi tối đa 30 kí tự
+- Điểm kĩ thuật lập trình: kiểu số thực 
+- Điểm toan rời rạc: kiểu số thực
+- Điểm CTDL & GT: kiểu số thực 
+
+1. Viết hàm nhập ds thông tin sinh viên
+2. Viết hàm xuất ds thông tin sinh viên
+3. Xếp loại sinh viên dựa vào điểm trung bình:
+- Xuất sắc: > 9.8
+- Giỏi: >= 8
+- Khá: < 8
+- Trung bình: < 6.5
+- yếu: < 4
+4. Sắp xếp ds sinh viên tăng dần theo điểm trung bình
+5. Sắp xếp ds sinh viên giảm dần theo tên sinh viên
+Gợi ý: Sắp xếp theo thứ tự trong bảng mã ASCII
+substr()
+
+
+
+
+
+
+
+ 
