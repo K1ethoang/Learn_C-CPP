@@ -1,18 +1,20 @@
 #include <iostream>
 #include <string>
 
+// * Khai báo cấu trúc sinh viên
 struct sinh_vien
 {
     std::string ma_so;
     std::string ho_ten;
-    float diem_KTLT;
-    float diem_TRR;
-    float diem_CTGT_GT;
+    float diem_ki_thuat_lap_trinh;
+    float diem_toan_roi_rac;
+    float diem_CTDL_GT;
 };
 
+// * Hàm nhập thông tin 1 sinh viên
 void nhap_thong_tin_1_sinh_vien(sinh_vien &sv)
 {
-    // Bat dieu kien nhap ma so
+
     do
     {
         std::cout << "\nNhap Ma So sinh vien: ";
@@ -20,12 +22,10 @@ void nhap_thong_tin_1_sinh_vien(sinh_vien &sv)
         std::getline(std::cin, sv.ma_so);
         if (sv.ma_so.length() > 20)
         {
-            std::cout << "\n\tDo dai khong hop le!";
-            system("pause");
+            std::cout << "\nMa so khong hop le! Vui long nhap lai\a";
         }
     } while (sv.ma_so.length() > 20);
 
-    // Bat dieu kien nhap ho ten
     do
     {
         std::cout << "\nNhap Ho Ten sinh vien: ";
@@ -33,118 +33,241 @@ void nhap_thong_tin_1_sinh_vien(sinh_vien &sv)
         std::getline(std::cin, sv.ho_ten);
         if (sv.ho_ten.length() > 30)
         {
-            std::cout << "\n\tDo dai khong hop le!";
-            system("pause");
+            std::cout << "\n\tMa so khong hop le! Vui long nhap lai\a";
         }
     } while (sv.ho_ten.length() > 30);
 
     do
     {
-        std::cout << "\nNhap diem Ki Thuat Lap Trinh: ";
-        std::cin >> sv.diem_KTLT;
-        if (sv.diem_KTLT < 0 || sv.diem_KTLT > 10)
+        std::cout << "\nNhap Diem Ky Thuat Lap Trinh: ";
+        std::cin >> sv.diem_ki_thuat_lap_trinh;
+        if (sv.diem_ki_thuat_lap_trinh < 0 || sv.diem_ki_thuat_lap_trinh > 10)
         {
-            std::cout << "\n\tDiem so khong hop le !";
-            system("pause");
+            std::cout << "\n\tDiem khong hop le! Vui long nhap lai\a";
         }
-    } while (sv.diem_KTLT < 0 || sv.diem_KTLT > 10);
+    } while (sv.diem_ki_thuat_lap_trinh < 0 || sv.diem_ki_thuat_lap_trinh > 10);
 
     do
     {
-        std::cout << "\nNhap diem Toan Roi Rac: ";
-        std::cin >> sv.diem_TRR;
-        if (sv.diem_TRR < 0 || sv.diem_TRR > 10)
+        std::cout << "\n\tNhap Diem Toan Roi Rac: ";
+        std::cin >> sv.diem_toan_roi_rac;
+        if (sv.diem_toan_roi_rac < 0 || sv.diem_toan_roi_rac > 10)
         {
-            std::cout << "\n\tDiem so khong hop le !";
-            system("pause");
+            std::cout << "\n\tDiem khong hop le! Vui long nhap lai\a";
         }
-    } while (sv.diem_TRR < 0 || sv.diem_TRR > 10);
+    } while (sv.diem_toan_roi_rac < 0 || sv.diem_toan_roi_rac > 10);
 
     do
     {
-        std::cout << "\nNhap diem Cau Truc Du Lieu & Giai Thuat: ";
-        std::cin >> sv.diem_CTGT_GT;
-        if (sv.diem_CTGT_GT < 0 || sv.diem_CTGT_GT > 10)
+        std::cout << "\nNhap Diem Cau Truc Du Lieu & Giai Thuat: ";
+        std::cin >> sv.diem_CTDL_GT;
+        if (sv.diem_CTDL_GT < 0 || sv.diem_CTDL_GT > 10)
         {
-            std::cout << "\n\tDiem so khong hop le !";
-            system("pause");
+            std::cout << "\n\tDiem khong hop le! Vui long nhap lai\a";
         }
-    } while (sv.diem_CTGT_GT < 0 || sv.diem_CTGT_GT > 10);
+    } while (sv.diem_CTDL_GT < 0 || sv.diem_CTDL_GT > 10);
 }
 
+// * Hàm xuất thông tin 1 sinh viên
 void xuat_thong_tin_1_sinh_vien(sinh_vien sv)
 {
     std::cout << "\nMa So sinh vien: " << sv.ma_so;
     std::cout << "\nHo Ten sinh vien: " << sv.ho_ten;
-    std::cout << "\nDiem Ki Thuat Lap Trinh: " << sv.diem_KTLT;
-    std::cout << "\nDiem Toan Roi Rac: " << sv.diem_TRR;
-    std::cout << "\nDiem Cau Truc Du Lieu & Giai Thuat: " << sv.diem_CTGT_GT;
+    std::cout << "\nDiem Ky Thuat Lap Trinh: " << sv.diem_ki_thuat_lap_trinh;
+    std::cout << "\nDiem Toan Roi Rac: " << sv.diem_toan_roi_rac;
+    std::cout << "\nDiem Cau Truc Du Lieu & Giai Thuat: " << sv.diem_CTDL_GT;
 }
 
-struct danh_sach
+// * Khai bao danh sach thong tin sinh vien
+struct danh_sach_sinh_vien
 {
-    sinh_vien *ds_sv[100]; // Khai bao mang 1 chieu cac con tro sinh vien
-    int n;
+    sinh_vien array_sv[100]; // * Khai báo mảng 1 chiều tĩnh chứa 100 sinh viên
+    int n;                   // * Số lượng sinh viên hiện có trong mảng
 };
 
-// Ham xuat danh sach sinh vien
-void xuat_danh_sach_sinh_vien(danh_sach ds)
+// ! Ham nhap danh sach thong tin sinh vien
+void nhap_thong_tin_nhieu_sinh_vien(danh_sach_sinh_vien &ds)
 {
     for (int i = 0; i < ds.n; i++)
     {
-        std::cout << "\n\n\t\tTHONG TIN SINH VIEN THU " << i + 1 << std::endl;
-        xuat_thong_tin_1_sinh_vien(*ds.ds_sv[i]);
+        std::cout << "\n\n\t\tNHAP THONG TIN SINH VIEN THU " << i + 1 << std::endl;
+        nhap_thong_tin_1_sinh_vien(ds.array_sv[i]);
     }
 }
 
-// Ham quan li danh sach sinh vien
-void menu(danh_sach &ds)
+// ! Ham xuat danh sach thong tin sinh vien
+void xuat_danh_sach_sinh_vien(danh_sach_sinh_vien ds)
 {
-    int lua_chon;
-    while (true)
+    int j(0);
+    for (int i = 0; i < ds.n; i++)
     {
-        system("cls");
-        std::cout << "\n\n\t\t======== QUAN LY SINH VIEN ========\n";
-        std::cout << "\n\t1. Them thong tin sinh vien";
-        std::cout << "\n\t2. Xuat danh sach sinh vien";
-        std::cout << "\n\t0. Ket thuc";
-        std::cout << "\n\n\t\t============= END =============\n";
+        j++;
+        std::cout << "\n\n\t\tTHONG TIN SINH VIEN THU " << j << std::endl;
+        xuat_thong_tin_1_sinh_vien(ds.array_sv[i]);
+    }
+}
 
-        std::cout << "\nNhap lua chon: ";
-        std::cin >> lua_chon;
-        if (lua_chon == 0)
+// * Hàm tính điểm trung bình
+float tinh_diem_trung_binh(sinh_vien sv)
+{
+    return (sv.diem_ki_thuat_lap_trinh + sv.diem_toan_roi_rac + sv.diem_CTDL_GT) / 3;
+}
+
+// * Hàm xếp loại 1 sinh viên
+void xep_loai_1_sinh_vien(sinh_vien sv)
+{
+    if (tinh_diem_trung_binh(sv) > 9.8)
+    {
+        std::cout << "\n\t--> Xuat Sac <--";
+    }
+    else if (tinh_diem_trung_binh(sv) >= 8)
+    {
+        std::cout << "\n\t--> Gioi <--";
+    }
+    else if (tinh_diem_trung_binh(sv) >= 6.5)
+    {
+        std::cout << "\n\t--> Kha <--";
+    }
+    else if (tinh_diem_trung_binh(sv) >= 4)
+    {
+        std::cout << "\n\t--> Trung Binh <--";
+    }
+    else
+    {
+        std::cout << "\n\t--> Yeu <--";
+    }
+}
+
+// ! Hàm xếp loai các sinh viên
+void xep_loai_danh_sach_sinh_vien(danh_sach_sinh_vien ds)
+{
+    for (int i = 0; i < ds.n; i++)
+    {
+        std::cout << "\n\n"
+                  << i + 1
+                  << ". MSSV: " << ds.array_sv[i].ma_so << " - "
+                  << "Ho Ten: " << ds.array_sv[i].ho_ten;
+        xep_loai_1_sinh_vien(ds.array_sv[i]);
+    }
+}
+
+// * Hàm hoán vị
+void hoan_vi(sinh_vien &x, sinh_vien &y)
+{
+    sinh_vien temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+// ! Hàm sắp xếp sinh viên tăng dần theo điểm trung bình
+void sap_xep_tang_dan_theo_diem_tb(danh_sach_sinh_vien &ds)
+{
+    for (int i = 0; i < ds.n - 1; i++)
+    {
+        for (int j = i + 1; j < ds.n; j++)
         {
-            break;
+            if (tinh_diem_trung_binh(ds.array_sv[i]) > tinh_diem_trung_binh(ds.array_sv[j]))
+            {
+                hoan_vi(ds.array_sv[i], ds.array_sv[j]);
+            }
         }
-        else if (lua_chon == 1)
+    }
+}
+
+// ! Hàm sắp xếp sinh viên giảm dần theo tên
+void sap_xep_giam_dan_theo_ten(danh_sach_sinh_vien &ds)
+{
+    for (int i = 0; i < ds.n - 1; i++)
+    {
+        for (int j = i + 1; j < ds.n; j++)
         {
-            sinh_vien *x = new sinh_vien;
-            std::cout << "\n\n\t\tNHAP THONG TIN SINH VIEN\n";
-            nhap_thong_tin_1_sinh_vien(*x);
-            ds.ds_sv[ds.n] = x; // Them sinh vien x vao mang 1 chieu cac con tro sinh vien
-            ds.n++;
-        }
-        else if (lua_chon == 2)
-        {
-            std::cout << "\n\n\t\t\tDANH SACH SINH VIEN\n";
-            xuat_danh_sach_sinh_vien(ds);
-            system("pause");
+            if (ds.array_sv[i].ho_ten.substr() < ds.array_sv[j].ho_ten.substr())
+            {
+                hoan_vi(ds.array_sv[i], ds.array_sv[j]);
+            }
         }
     }
 }
 
 int main()
 {
-    danh_sach ds;
-    ds.n = 0;
-    menu(ds);
+    danh_sach_sinh_vien ds_sinh_vien;
+    bool thoat = false; // * Thiết lập ban đầu là không thoat
 
-    // Ham giai phong vung nho cho mang 1 chieu cac con tro
-    for (int i = 0; i < ds.n; i++)
+    do
     {
-        delete ds.ds_sv[i];
-    }
+        system("cls");
+        short lua_chon;
+        std::cout << "\n=================================== MENU ===================================";
+        std::cout << "\n\t1. Nhap danh sach sinh vien";
+        std::cout << "\n\t2. Xuat danh sach sinh vien";
+        std::cout << "\n\t3. Xep loai sinh vien";
+        std::cout << "\n\t4. Sap xep danh sach sinh vien TANG DAN theo DIEM TRUNG BINH";
+        std::cout << "\n\t5. Sap xep danh sach sinh vien GIAM DAN theo TEN";
+        std::cout << "\n\t0. Thoat chuong trinh";
+        std::cout << "\n============================================================================";
+        std::cout << "\nNhap lua chon cua ban: ";
 
-    system("pause");
+        std::cin >> lua_chon;
+        switch (lua_chon)
+        {
+        case 0:
+            std::cout << "\nBan da chon thoat chuong trinh !";
+            system("pause");
+            thoat = true;
+            break;
+        case 1:
+            system("cls");
+            std::cout << "\n\n\t\t\t\t1. NHAP DANH SACH SINH VIEN\n";
+            do
+            {
+                std::cout << "\nNhap so luong sinh vien: ";
+                std::cin >> ds_sinh_vien.n;
+                if (ds_sinh_vien.n < 0 || ds_sinh_vien.n > 100)
+
+                {
+                    std::cout << "\n\tSo luong khong hop le! Vui long nhap lai (toi da 100 sinh vien)";
+                }
+            } while (ds_sinh_vien.n < 0 || ds_sinh_vien.n > 100);
+            nhap_thong_tin_nhieu_sinh_vien(ds_sinh_vien);
+            std::cout << "\n\n\t\t\t\tDANH SACH SINH VIEN VUA NHAP\n";
+            xuat_danh_sach_sinh_vien(ds_sinh_vien);
+            system("pause");
+
+            break;
+        case 2:
+            system("cls");
+            std::cout << "\n\n\t\t\t\t2. XUAT DANH SACH SINH VIEN\n";
+            xuat_danh_sach_sinh_vien(ds_sinh_vien);
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            std::cout << "\n\n\t\t\t\t3. XEP LOAI SINH VIEN\n";
+            xep_loai_danh_sach_sinh_vien(ds_sinh_vien);
+            system("pause");
+            break;
+        case 4:
+            system("cls");
+            std::cout << "\n\n\t\t\t\t4. DANH SACH SINH VIEN SAP XEP TANG DAN THEO DIEM TB\n";
+            sap_xep_tang_dan_theo_diem_tb(ds_sinh_vien);
+            xuat_danh_sach_sinh_vien(ds_sinh_vien);
+            system("pause");
+            break;
+        case 5:
+            system("cls");
+            std::cout << "\n\n\t\t\t\t5. DANH SACH SAU KHI SAP XEP GIAM DAN THEO TEN\n";
+            sap_xep_giam_dan_theo_ten(ds_sinh_vien);
+            xuat_danh_sach_sinh_vien(ds_sinh_vien);
+            system("pause");
+            break;
+        default:
+            std::cout << "\nLua chon cua ban khon hop le !";
+            system("pause");
+            break;
+        }
+    } while (!thoat);
+
     return 0;
 }
