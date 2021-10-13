@@ -17,6 +17,9 @@
 	\t	Tab khoảng cách ngang
 	\r	Nhảy về đầu hàng
 	\a	Tạo tiếng kêu
+	\f
+	\b  khoảng trắng
+	\v
 	\\	In ký tự  \
 	\"	In ký tự  "
 	\'	In ký tự '
@@ -31,7 +34,7 @@
 	%f		float			định dạng kiểu số thực
 	%c 		char			định dạng kiểu ký tự
 	%s		character string 	   	định dạng kiểu chuỗi ký tự
-	%lf		double			định dạng kiểu số thực double 
+	%Lf		double			định dạng kiểu số thực double 
 	%ld		long			định dạng cho một số kiểu long 
 	%Lf		long double		định dạng cho một số kiểu long double 
 
@@ -134,10 +137,10 @@
 
 
 [------------------- KHÁI NIỆM VỀ THAM CHIẾU VÀ THAM TRỊ -------------------]
+------------------- Mảng Một Chiều -------------------
 
 ------------------- CON TRỎ  -------------------
 
-------------------- Mảng Một Chiều -------------------
 
 				[------------------- MẢNG HAI CHIỀU -------------------]
 
@@ -551,9 +554,6 @@ sinh_vien y;
 
 y.ho_ten  = x.ho_ten;
 y.diem = x.diem;
-
-
-
 
 
 ------------------- KIỂU DỮ LIỆU UNION -------------------
