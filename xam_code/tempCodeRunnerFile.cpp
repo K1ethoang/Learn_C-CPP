@@ -46,6 +46,5 @@ int main()
         j++;
     }
 
-    system("pause");
     return 0;
 }
