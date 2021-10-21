@@ -31,7 +31,7 @@ int main()
     std::cin >> n;
 
     int j = 0;
-    while (j != n)
+    while (j <= n)
     {
         std::string str;
         std::cout << "Nhap Chuoi " << j + 1 << " : ";

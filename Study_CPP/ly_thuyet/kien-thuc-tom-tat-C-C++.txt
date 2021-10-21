@@ -137,10 +137,54 @@
 
 
 [------------------- KHÁI NIỆM VỀ THAM CHIẾU VÀ THAM TRỊ -------------------]
-------------------- Mảng Một Chiều -------------------
 
-------------------- CON TRỎ  -------------------
 
+				[------------------- CON TRỎ  -------------------]
+
+- Trong bộ nhớ máy tính chia làm 4 vùng nhớ:
+1. Code segment
+- Lưu giữ các mã máy - mã máy là các mã nhị phân 0 1
+
+2. Data segment
+- Lưu trữ các biến tĩnh (static) và các biến toàn cục - nằm ngoài phạm vi của hàm - có phạm vi hoạt động từ cái dòng khai báo, khởi tạo trở xuống
+
+3. Stack segment
+- Vùng nhớ lưu trữ các biến cục bộ 
+- Những cái biến nào mà nó nằm trong cái cặp ngoặc nhọn {} thì gọi là biến cục bộ 
+- Vùng nhớ này sẽ do CPU quản lí - nghĩa là khi chúng ta yêu cầu cấp phát 1 vùng nhớ thì CPU sẽ cấp phát, khi chúng ta không dùng nữa thì tự động CPU giải phóng vùng nhớ đó
+
+4. Heap segment
+- Vùng nhớ này là vùng nhớ không do CPU quản lí, mà do người lập trình quản lí vùng nhớ này. 
+- Khi vùng lập trình cấp phát cái biến để sử dụng trong cái vùng nhớ này - con trỏ, thì sau khi sử dụng xong - phải có cơ chế giải phóng vùng nhớ đó 
+
+		Khái niệm con trỏ - biến con trỏ
+- 1 biến bình thường gồm 2 thành phần: 
++ Giá trị
++ Địa chỉ
+
+int a; // Hệ điều hành sẽ cấp phát cho chúng ta 1 vùng nhớ ngẫu nhiên đâu đó trong bộ nhớ máy tính - và hệ điều hành gán cho biến đó 1 cái địa chỉ để quản lí 
+
+Biến con trỏ cũng giống như 1 biến bình thường cũng có 2 thành phần, nhưng nó có 1 tính chất mà các biến bình thường không có - đó là miền giá trị
+
+- Biến con trỏ có 3 thành phần: 
++ Giá trị
++ Địa chỉ
++ Miền giá trị
+
+Miền giá trị là cái địa chỉ của cái biến mà con trỏ đó trỏ tới.
+Nó có quyền trỏ lung tung trong bộ nhớ 
+Cú pháp: <kiểu dữ liệu trỏ tới> * <tên con trỏ>
+
+VD: 
+int *b; //Khai báo ra biến con trỏ  
+- Kiểu dữ kiệu con trỏ không phải là kiểu dữ liệu của nó, mà đó chính là kiểu dữ liệu của cái biến mà con trỏ đó sẽ trỏ tới 
+- Con trỏ b chỉ có thể trỏ đến các biến int mà thôi 
+
+Tính Chất: của con trỏ là lấy địa chỉ của 1 biến mà nó trỏ đến
+
+
+
+------------------- Mảng Một Chiều Cấp Phát Động -------------------
 
 				[------------------- MẢNG HAI CHIỀU -------------------]
 
@@ -156,10 +200,6 @@ VD: int a[4][4]
 	row = colum
 + Các phần tử nằm trên đường chéo phụ: a[0][3], a[1][2], a[2][1], a[3][0].
 	row tăng - column giảm
-
-
-
-------------------- CẤP PHÁT ĐỘNG  ------------------- 
 
 
 
@@ -433,6 +473,9 @@ Dùng thư viện <string> // Khai báo thư viện dùng các hàm xử lí
 #include <string>
 
 string str;
+
+==== ĐẢO ====
+std::reverse(str.begin(), str.end()); <algorithm>
 
 ==== XÓA ====
 str.erase(str.begin() + 3): xóa 1 kí tự tại vị trí 3

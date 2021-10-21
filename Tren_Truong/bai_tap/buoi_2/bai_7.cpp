@@ -8,7 +8,7 @@
 int main()
 {
     int n;
-    printf("Nhap so giay: ");
+    printf("Nhap so giay: "); // 3661
     scanf("%d", &n);
     if (n > 0 && n <= 86400)
     {
