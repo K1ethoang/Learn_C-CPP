@@ -157,7 +157,9 @@
 - Vùng nhớ này là vùng nhớ không do CPU quản lí, mà do người lập trình quản lí vùng nhớ này. 
 - Khi vùng lập trình cấp phát cái biến để sử dụng trong cái vùng nhớ này - con trỏ, thì sau khi sử dụng xong - phải có cơ chế giải phóng vùng nhớ đó 
 
-		Khái niệm con trỏ - biến con trỏ
+
+=================Khái niệm con trỏ - biến con trỏ
+
 - 1 biến bình thường gồm 2 thành phần: 
 + Giá trị
 + Địa chỉ
@@ -183,10 +185,58 @@ int *b; //Khai báo ra biến con trỏ
 Tính Chất: của con trỏ là lấy địa chỉ của 1 biến mà nó trỏ đến
 
 
+===================Khái niệm con trỏ vô kiểu 
 
-------------------- Mảng Một Chiều Cấp Phát Động -------------------
+void * : con trỏ này có thể nhận mọi kiểu dữ liệu
+VD: 
+int a;
+void *p;
+p = &a;
 
-				[------------------- MẢNG HAI CHIỀU -------------------]
+
+===================Cơ chế cấp phát bộ nhớ và giải phóng bộ nhớ
+
+- Tại sao phải cấp phát bộ nhớ cho con trỏ?
+Khi ta khai báo int *p = 8; - lúc này biến p chỉ có địa chỉ, chưa hề tồn tại vùng nhớ để chứ địa chỉ. Nếu như ban đầu ta muốn cho con trỏ p đó chứa giá trị thì sẽ bị lỗi, bởi vì con trỏ đó chưa có vùng nhớ.
+Vì vậy chúng ta cần phải đi cấp phát cho con trỏ đó 1 cái vùng nhớ - vùng nhớ này phải hợp lệ.
+
+- Tại sao phải giải phóng bộ nhớ?
+Biến toàn cục, cục bộ thì do CPU quản lí - khi ta không dùng nữa hay kết thúc chương trình thì CPU sẽ đến đó và giải phóng vùng nhớ cho các biến
+Vùng nhớ chứa con trỏ là vùng nhớ do người lập trình quản lí, khi ta cấp phát vùng nhớ cho con trỏ, thì khi mà ta không dùng nữa thì ta phải đi giải phóng vùng nhớ đó.
+Nếu như ta không đi giải phóng cho vùng nhớ sau khi ta cấp phát  và sử dụng thì sẽ gây ra tình trạng tràn bộ nhớ - Memory Leak.
+
+
+- Trong ngôn ngữ lập trình C:
+- có các hàm cấp phát bộ nhớ cho con trỏ như sau:
++ malloc: Nếu như ta không gán giá trị cho ô nhớ thì nó sẽ mang giá trị rác (chính là giá trị không xác định thuộc kiểu dữ liệu của biến đó)
++ calloc: Nếu như ta không gán giá trị cho ô nhớ thì nó sẽ mang giá trị là 0
++ realloc (Hàm cha của 2 hàm trên):
+++ Nếu như con trỏ chưa hề được cấp phát vùng nhớ thì hàm realloc sẽ cấp phát cho nó 1 vùng nhớ mới
+++ Nếu như con trỏ đã có vùng nhớ thì hàm realloc có tác dụng cấp phát lại vùng nhớ cho con trỏ - nghĩa là có thể nới rộng vùng nhớ, thu hẹp vùng nhớ
+- Dùng hàm free(): để giải phóng bộ nhớ cho con trỏ
+
+- Trong ngôn ngữ lập trình C++:
++ có toán tử new để cấp phát bộ nhớ cho con trỏ
+<kiểu dữ liệu>*<tên con trỏ cần cấp phát vùng nhớ> = new <kiểu dữ liệu>[số lượng ô nhớ cần cấp phát];
++ dùng delete: giải phóng vùng nhớ cho con trỏ - thực chất chỉ là đang thông báo cho hệ điều hành biết rằng: cái vùng nhớ cấp phát khi nãy tui (con trỏ) không dùng nữa - anh (hệ điều hành) xem thằng nào (chương trình khác) cần vùng nhớ đó thì anh lấy cho thằng đó đi.Vùng nhớ chỉ hoàn toàn được giải phóng khi có cái chương trình nào đó dùng vùng nhớ đó
+
+==> Tất cả các vùng nhớ mà cấp phát cho con trỏ đều nằm trên cùng nhớ HEAP SEGMENT 
+==> Vì vậy khi chúng ta cấp phát bộ nhớ cho con trỏ thì - khi không sử dụng nữa thì phải giải phóng cho nó
+==> Không giải phóng sẽ bị lỗi tràn bộ nhớ (memory leak) 
+
+
+
+ 
+				[------------------- Mảng 1 Chiều - Cấp Phát Động -------------------]
+
+- Mảng động là mảng có thể thay đổi số lượng phần tử của mảng trong quá trình chương trình chạy
+
+- Cú pháp: 
+<kiểu dữ liệu của mảng> * <tên mảng - tên con trỏ quản lí mảng> = new <kiểu dữ liệu của mảng>[số lượng phần tử của mảng];
+
+- Hạn chế dư thừa bộ nhớ
+
+				[------------------- MẢNG 2 CHIỀU -------------------]
 
 * CÚ PHÁP:        <kiểu dữ liệu> <Tên mảng> [<Kích thước dòng>][<Kích thước cột>]
 VD:
@@ -545,6 +595,8 @@ bool kiem_tra_so_hoan_thien(int n);
 void giai_phuong_trinh_bac_hai(float a, float b, float c);
 
 
+
+
 		[------------------- KIỂU DỮ LIỆU STRUCT  -------------------]
 struct: bản chất là 1 kiểu dữ liệu cho người lập trình định nghĩa
 STRUCT LÀ CƠ SỞ CỦA CLASS - LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG
@@ -597,6 +649,10 @@ sinh_vien y;
 
 y.ho_ten  = x.ho_ten;
 y.diem = x.diem;
+
+
+			[------------------- FILE -------------------]
+
 
 
 ------------------- KIỂU DỮ LIỆU UNION -------------------

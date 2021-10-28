@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "evondev.dracula-high-contrast",
+        "coenraads.bracket-pair-colorizer",
+        "johnpapa.vscode-peacock",
+        "hoovercj.vscode-power-mode",
+        "shan.code-settings-sync",
+        "wakatime.vscode-wakatime"
+    ]
+}

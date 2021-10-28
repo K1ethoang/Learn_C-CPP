@@ -1,43 +1,29 @@
-
-// !Thầy giáo Pa đến từ Bali
-
-#include <iostream>
-#include <cmath>
-
-int dem_so_mu(int n)
-{
-    short dem = 0;
-    while (n != 0)
-    {
-        n /= 10;
-        dem++;
-    }
-    return dem;
-}
-
-int check_palindrome_number(int n)
-{
-
-    int temp = n;
-    int sum = 0;
-    short mu = dem_so_mu(n) - 1;
-    while (temp != 0)
-    {
-        sum += (temp % 10) * pow(10, mu);
-        temp /= 10;
-        mu--;
-    }
-    if (sum == n)
-    {
-        return 1;
-    }
-    return 0;
-}
+#include <bits/stdc++.h>
+using namespace std;
 
 int main()
 {
-    int t;
-    std::cin >> t;
+    system("cls") int a, b, c;
+    cin >> a >> b >> c;
+    if (a > 31 || b > 12)
+    {
+        cout << "0";
+    }
+    else if (b == 2 && a > 28)
+    {
+        if (c % 400 == 0 || (c % 4 == 0 && c % 100 != 0))
+        {
+            cout << "0";
+        }
+        else
+        {
+            cout << "0";
+        }
+    }
+    else if (c < 1995 || c > 2012)
+    {
+        cout << "0";
+    }
 
     return 0;
 }
