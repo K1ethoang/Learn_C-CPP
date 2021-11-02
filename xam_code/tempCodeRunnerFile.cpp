@@ -1,50 +1,49 @@
-#include <iostream>
-#include <string>
-#include <cmath>
-
-// Chuyen sang he nhi phan
-long long chuyen_thanh_nhi_phan(char c)
-{
-    int n = (int)(c); // Ep kieu ki tu thanh kieu so nguyen
-    int so_mu = 0;
-    long long x = 0; // Bien luu he nhi phan
-    while (n != 0)
-    {
-        x += (n % 2) * pow(10, so_mu);
-        n /= 2;
-        so_mu++;
-    }
-    return x;
-}
-
-// Xep lai vao chuoi
-void xuat(long long x)
-{
-    std::cout << x;
-}
-
+#include <stdio.h>
+#include <math.h>
 int main()
 {
-
-    int n;
-    std::cout << "Nhap so chuoi can chuyen -> Nhi phan: ";
-    std::cin >> n;
-
-    int j = 0;
-    while (j != n)
+    int a[100];
+    int dem = 0;
+    int n, i = 0;
+    int j = 2;
+    printf("nhap phan tu day: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
     {
-        std::string str;
-        std::cout << "Nhap Chuoi " << j + 1 << " : ";
-        fflush(stdin);
-        std::getline(std::cin, str);
-        for (int i = 0; i < str.length(); i++)
-        {
-            xuat(chuyen_thanh_nhi_phan(str[i]));
-            std::cout << " ";
-        }
-        std::cout << std::endl;
-        j++;
+        printf("gia tri a[%d]= ", i);
+        scanf("%d", &a[i]);
+    }
+    printf("gia tri da nhap la");
+    for (int i = 0; i < n; i++)
+    {
+        printf("\na[%d]= %d", i, a[i]);
     }
 
-    return 0;
+    if (a[i] < 2)
+    {
+        printf("%d khong la nguyen to ", a[i]);
+    }
+    else
+    {
+        if (a[i] == 2)
+        {
+            printf("\n%d la so nguyen to", a[i]);
+        }
+        else
+
+        {
+            for (int j = 2; j < a[i - 1]; j++)
+            {
+                if (a[i] % j == 0)
+                {
+                    printf("%d khong la nguyen to", a[i]);
+                    dem++;
+                    break;
+                }
+            }
+            if (dem == 0)
+                printf("\n%d la so nguyen to", a[i]);
+        }
+        i++;
+    }
 }

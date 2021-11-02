@@ -1,0 +1,2 @@
+Tong 2 so nguyen 2 + 1 = 3
+Tong 2 so nguyen 12 + 2 = 14

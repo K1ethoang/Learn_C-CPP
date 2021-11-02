@@ -70,10 +70,10 @@ void nhap_thong_tin_1_sinh_vien(sinh_vien &sv)
 // * Ham xuat thong tin 1 sinh vien
 void xuat_thong_tin_1_sinh_vien(sinh_vien sv)
 {
-    std:: cout << "\nMa So: " << sv.ma_so;
-    std:: cout << "\nHo ten: " << sv.ho_ten;
-    std:: cout << "\nNam sinh: " << sv.nam_sinh;
-    std:: cout << "\nDiem trung binh: " << sv.diem_trung_binh;
+    std::cout << "\nMa So: " << sv.ma_so;
+    std::cout << "\nHo ten: " << sv.ho_ten;
+    std::cout << "\nNam sinh: " << sv.nam_sinh;
+    std::cout << "\nDiem trung binh: " << sv.diem_trung_binh;
 }
 
 // ! Ham nhap danh sach sinh vien

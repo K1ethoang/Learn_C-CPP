@@ -653,6 +653,29 @@ y.diem = x.diem;
 
 			[------------------- FILE -------------------]
 
+- #include <fstream> 
+==> thư viện hỗ trợ việc thao tác với file
+
+1.
+ifstream: đây là lớp - có chức năng hỗ trợ chúng ta ĐỌC dữ liệu từ file về chương trình
+2.
+ostream: đây là lớp - có chức năng hỗ trợ chúng ta GHI dữ liệu từ CHƯƠNG TRÌNH vào file 
+
+=============== Các chế độ mở tệp tin file
+
+ios::in		Mở một tệp tin để đọc
+ios::out		Mở một tệp tin có sẵn để in
+ios::app		Mở một tệp tin có sẵn để thêm dữ liệu vào cuối tệp
+ios::ate		Mở một tệp tin và đặt con trỏ vào cuối tệp
+ios::trunc		Nếu tệp tin đã có sẵn thì dữ liệu của nó sẽ bị mất
+ios::nocreate	Mở một tệp tin, tệp tin này bắt buộc phải tồn tại
+ios::noreplace	Chỉ mở tệp tin khi tệp tin chưa tồn tại
+ios::binary		Mở một tệp tin ở chế độ nhị phân. Khi mà file được mở ra ở chế độ này thì dữ liệu sẽ được đọc hay ghi từ 1 định dạng nguyên thuỷ nhị phân
+ios::text		Mở một tệp tin ở chế độ văn bản
+
+
+
+
 
 
 ------------------- KIỂU DỮ LIỆU UNION -------------------
