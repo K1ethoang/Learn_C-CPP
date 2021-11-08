@@ -674,11 +674,20 @@ ios::binary		Mở một tệp tin ở chế độ nhị phân. Khi mà file đư
 ios::text		Mở một tệp tin ở chế độ văn bản
 
 
-
-
-
-
-------------------- KIỂU DỮ LIỆU UNION -------------------
+		[------------------- CON TRỎ CHỈ VỊ -------------------]
+Hàm dịch chuyển con trỏ chỉ vị trong file 
+seekg(x, y)
+seekg( off_type offset, ios::seekdir origin );
+origin: beg|cur|end
+seekg( pos_type position );
+- x: số byte cần dịch chuyển (luôn luôn là 1 con số nguyên)
+	+ âm: dịch về bên tay trái
+	+ dương: dịch về bên tay phải
+- y: vị trí bắt đầu dịch
+	+ y = 0: đầu file <=> ios::beg <=> SEEK_SET
+	+ y = 1: vị trí hiện tại    <=> ios::cur <=> SEEK_CUR
+	+ y = 2: cuối file <=> ios::end <=> SEEK_END		
+ 
 
 
 
