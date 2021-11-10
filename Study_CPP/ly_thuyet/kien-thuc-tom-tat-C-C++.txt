@@ -212,7 +212,9 @@ Nếu như ta không đi giải phóng cho vùng nhớ sau khi ta cấp phát  v
 + calloc: Nếu như ta không gán giá trị cho ô nhớ thì nó sẽ mang giá trị là 0
 + realloc (Hàm cha của 2 hàm trên):
 ++ Nếu như con trỏ chưa hề được cấp phát vùng nhớ thì hàm realloc sẽ cấp phát cho nó 1 vùng nhớ mới
+vd: a = (int *)realloc(NULL, sizeof(int));
 ++ Nếu như con trỏ đã có vùng nhớ thì hàm realloc có tác dụng cấp phát lại vùng nhớ cho con trỏ - nghĩa là có thể nới rộng vùng nhớ, thu hẹp vùng nhớ
+vd: a = (int *)realloc(b, sizeof(int));
 - Dùng hàm free(): để giải phóng bộ nhớ cho con trỏ
 
 - Trong ngôn ngữ lập trình C++:
