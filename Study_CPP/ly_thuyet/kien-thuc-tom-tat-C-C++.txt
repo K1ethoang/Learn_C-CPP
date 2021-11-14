@@ -545,8 +545,8 @@ str.insert(str.begin() + x, y, 'z'); // Thêm y lần ký tự z vào vị trí 
 str.insert(str.begin() + x, str2.begin() + y, str2.begin() + z); // Thêm chuỗi ký tự con của chuỗi str2 bắt đầu từ vị trí y cho đến vị trí z - 1 vào vị trí x trong chuỗi str.
 
 ==== LẤY CHUỖI CON ====
-string str2 = str.substr(x, y); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x và lấy ra y ký tự.
-string str2 = str.substr(x); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x cho đến cuối chuỗi.
+string str2 = str2.substr(x, y); // Lấy ra chuỗi con của chuỗi str2 bắt đầu từ vị trí x và lấy ra y ký tự.
+string str2 = str.substr(x); // Lấy ra chuỗi con của chuỗi str2 bắt đầu từ vị trí x cho đến cuối chuỗi.
 
 ==== TÌM KIẾM ====
 int found = str.find('x');

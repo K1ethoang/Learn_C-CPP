@@ -22,8 +22,6 @@
   },
   "peacock.color": "#46546A",
   "files.associations": {
-    "cmath": "cpp",
-    "vector": "cpp",
     "iostream": "cpp"
-  }
+  },
 }
