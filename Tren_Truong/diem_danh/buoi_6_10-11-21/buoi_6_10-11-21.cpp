@@ -123,6 +123,7 @@ void hoan_vi(doi_bong *a, doi_bong *b)
     *temp = *a;
     *a = *b;
     *b = *temp;
+    free(temp);
 }
 
 void ba_doi_co_diem_cao_nhat(doi_bong *db, int n)
