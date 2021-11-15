@@ -94,6 +94,7 @@ void xuat_danh_sach_sinh_vien(sinh_vien arr[], int n)
         std::cout << "\n\n\t\tTHONG TIN SINH VIEN THU " << i + 1 << std::endl;
         xuat_thong_tin_1_sinh_vien(arr[i]);
     }
+    system("pause");
 }
 
 // ! Tim kiem thong tin sinh vien dua vao diem trung binh

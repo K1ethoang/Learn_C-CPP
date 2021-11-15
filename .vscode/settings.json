@@ -21,7 +21,5 @@
     "titleBar.inactiveBackground": "#46546a99"
   },
   "peacock.color": "#46546A",
-  "files.associations": {
-    "iostream": "cpp"
-  },
+ 
 }
