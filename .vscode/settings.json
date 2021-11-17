@@ -5,10 +5,7 @@
     "activityBar.background": "#5a6c89",
     "activityBarBadge.background": "#4d333d",
     "activityBarBadge.foreground": "#e7e7e7",
-    "editorGroup.border": "#5a6c89",
-    "panel.border": "#5a6c89",
     "sash.hoverBorder": "#5a6c89",
-    "sideBar.border": "#5a6c89",
     "statusBar.background": "#46546a",
     "statusBar.border": "#46546a",
     "statusBar.debuggingBackground": "#6a5c46",
@@ -21,5 +18,10 @@
     "titleBar.inactiveBackground": "#46546a99"
   },
   "peacock.color": "#46546A",
+  "files.associations": {
+    "iostream": "cpp",
+    "typeindex": "cpp",
+    "typeinfo": "cpp"
+  },
  
 }

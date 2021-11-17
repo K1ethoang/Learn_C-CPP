@@ -655,6 +655,30 @@ y.diem = x.diem;
 
 			[------------------- FILE -------------------]
 
+------------- C ----------------
+cú pháp FILE *<ten>;
+				MODE
+r	Mở file chỉ cho phép đọc - 	Nếu file không tồn tại, fopen() trả về NULL.
+rb	Mở file chỉ cho phép đọc dưới dạng nhị phân. -	Nếu file không tồn tại, fopen() trả về NULL.
+w	Mở file chỉ cho phép ghi. -	Nếu file đã tồn tại, nội dung sẽ bị ghi đè. Nếu file không tồn tại, nó sẽ được tạo tự động.
+wb	Open for writing in binary mode. -	Nếu file đã tồn tại, nội dung sẽ bị ghi đè. Nếu file không tồn tại, nó sẽ được tạo tự động.
+a	Mở file ở chế độ ghi “append”. Tức là sẽ ghi vào cuối của nội dung đã có. -	Nếu file không tồn tại, nó sẽ được tạo tự động.
+ab	Mở file ở chế độ ghi nhị phân “append”. Tức là sẽ ghi vào cuối của nội dung đã có. -	Nếu file không tồn tại, nó sẽ được tạo tự động.
+r+	Mở file cho phép cả đọc và ghi. -	Nếu file không tồn tại, fopen() trả về NULL.
+rb+	Mở file cho phép cả đọc và ghi ở dạng nhị phân. -	Nếu file không tồn tại, fopen() trả về NULL.
+w+	Mở file cho phép cả đọc và ghi. -	Nếu file đã tồn tại, nội dung sẽ bị ghi đè. Nếu file không tồn tại, nó sẽ được tạo tự động.
+wb+	Mở file cho phép cả đọc và ghi ở dạng nhị phân.	Nếu file đã tồn tại, nội dung sẽ bị ghi đè. - Nếu file không tồn tại, nó sẽ được tạo tự động.
+a+	Mở file cho phép đọc và ghi “append”. -Nếu file không tồn tại, nó sẽ được tạo tự động.
+ab+	Mở file cho phép đọc và ghi “append” ở dạng nhị phân. -	Nếu file không tồn tại, nó sẽ được tạo tự động.
+
+
+- Mở file: fopen("<đường dẫn đến file>", <mode>)
+
+- Đóng file: fclose(<file cần đóng>)
+
+
+
+---------- C++ ------------------
 - #include <fstream> 
 ==> thư viện hỗ trợ việc thao tác với file
 
@@ -690,8 +714,84 @@ seekg( pos_type position );
 	+ y = 1: vị trí hiện tại    <=> ios::cur <=> SEEK_CUR
 	+ y = 2: cuối file <=> ios::end <=> SEEK_END		
  
+			
 
+		[------------------- VECTOR -------------------]
+======== ƯU ĐIỂM ========	
+1. Vector bản chất là 1 mảng 1 chiều - cụ thể hơn nó là 1 cái mảng động - nó là 1 cái siêu mảng động 
++ Vector có thể chứa các kiểu dữ liệu cơ sở (int, float, char, double...) và kiểu dữ liệu do người lập trình định nghĩa (struct, class...)
+TẠI SAO NÓ LÀ SIÊU MẢNG ĐỘNG
+ + Vector có hết tất cả các tính chất mà mảng 1 chiều (mảng tĩnh và mảng động) và có thêm 1 số tính chất riêng của nó nữa (khắc phục các nhược điểm của mảng tĩnh và mảng động).
++ Nếu như chúng ta dùng mảng tĩnh hay mảng động thì KHAI BÁO KÍCH THƯỚC CỦA MẢNG CẦN THAO TÁC TRƯƠC. Còn vector ko cần khai báo trước số lượng phần tử cần dùng - bởi vì nó được hỗ trợ cái cơ chế tự động thêm phần tử vào cuối (push_back())
++ Tự động đi giải phóng vùng nhớ khi chương trình kết thúc
++ Các thao tác thêm, xoá, tìm kiếm, sắp xếp bên mảng 1 chiều (mảng tĩnh hay mảng động) thì chúng ta phải đi cài đặt - còn bên vector nó sẽ hỗ trợ chúng ta các cái hàm xử lý tương tự
 
+========KHUYẾT ĐIỂM ==========
+- Tốn bộ nhớ hơn mảng tĩnh và mảng động (do cơ chế container buộc phải tạo ra thêm các vùng nhớ riêng để quản lí chặt chẽ hơn)
+
+- Vector, String, List, Stack, Queue: thuộc thư viện chuẩn của C++ - STL (Standard Template Library)
+
+#include <vector>
+
+==========MỘT SỐ HÀM HỖ TRỢ TRÊN VECTOR=======
+
+1/ resize:
+- Hàm này có 2 dạng:
+	-  resize(<số lượng>): Cấp phát mảng với số lượng phần tử cụ thể cho trước. 
+
+                   	+ Mặc định khi cấp phát với resize là các phần tử đều mang giá trị mặc định ban đầu là 0(giống hàm calloc bên C)
+                   	+ Nếu mảng chưa từng được tạo thì sẽ tạo mảng với số lượng cụ thể đó. 
+                 	 	+ Nếu mảng đã được tạo mà tiếp tục resize thì kích thước của mảng sẽ co lại hay dãn ra so với mảng ban đầu. 
+                   	+ Nếu là co lại thì 1 số phần tử trong mảng ban đầu sẽ bị mất, nếu là dãn ra thì các phần tử lúc đầu vẫn tiếp tục tồn tại 
+
+	- resize(<số lượng>, <giá trị mặc định>):  
+
+	+ Cấp phát mảng với số lượng phần tử cụ thể cho trước - với giá trị của các phần tử là giá trị mặc định. 
+                  	+ Mảng được tạo mới nếu chưa có, nếu đã có rồi mảng sẽ co lại hoặc dãn ra so với mảng ban đầu. 
+
+2/ at(<chỉ số index>): Truy xuất đến phần tử có chỉ số index trong vector.
+vd: 
+vector a;
+cout << a.at(2); // Xuất ra phần tử tại vị trí 2 trong vector. Tương đương như: a[2]. Dùng cách nào cũng được. 
+ 
+3/ size(): Trả về kích thước hiện tại của vector (số lượng các phần tử đang chứa trong vector).
+
+4/ push_back(<Phần tử có kiểu dữ liệu bất kỳ>): Thực hiện đưa phần tử vào cuối vector.
+
+5/ pop_back(): Xóa phần tử cuối cùng trong vector.
+ 
+6/ front(): Trả về phần tử đầu tiên của mảng.
+
+7/ back(): Trả về phần tử cuối cùng của mảng.
+
+8/ capacity(): Trả về kích thước thực sự vector đang lưu trữ (các phần tử).
+
+9/ max_size(): Trả về kích thước tối đa có thể chứa các phần tử của các container.
+
+10/ begin(): Trả về 1 iterator trỏ đến phần tử đầu tiên trong vector (giống pHead bên List)
+
+11/ end(): Trả về 1 iterator trỏ đến phần tử cuối cùng trong vector (giống pTail bên List)
+
+12/ erase: Xóa phần tử trong vector.
+- Hàm này có 2 dạng:
+	+ Dạng 1: erase(<Tên vector>.begin() + <số nguyên x>): Xóa phần tử tại vị trí x trong mảng (vị trí trong mảng bắt đầu từ 0). 
+
+	+ Dạng 2: erase(<Tên vector>.begin() + <số nguyên x>, <Tên vector>.begin() + <số nguyên y>): Xóa các phần tử của mảng từ vị trí x cho đến vị trí y - 1.
+
+Lưu ý cả 2 trường hợp trên: Nếu vị trí truyền vào không hợp lệ thì chương trình sẽ bị lỗi.
+
+13/ clear(): Xóa tất cả các phần tử hiện có trong vector, vector sau khi thực hiện câu lệnh này sẽ trở thành vector rỗng.
+
+14/ insert: Thêm phần tử vào trong vector.
+- Hàm này có 4 dạng:
+	+ Dạng 1: insert(<Tên vector>.begin() + <số nguyên x>, <giá trị cần chèn>): Chèn giá trị vào vị trí x trong mảng.
+	+ Dạng 2: insert(<Tên vector>.begin() + <số nguyên x>, <số lần chèn y>, <giá trị cần chèn>): Chèn y lần giá trị vào vị trí x trong mảng.
+	+ Dạng 3: insert(<Tên vector>.begin() + <số nguyên x>, <Tên vector a>.begin() + <số nguyên y>, <Tên vector a>.begin() + <số nguyên z>): 
+                    ---> Lấy các phần tử từ vector a bắt đầu lấy từ vị trí y cho đến vị trí z - 1 và chèn vào vị trí x của vector hiện tại. 
+	+ Dạng 4: insert(<Tên vector>.begin() + <số nguyên x>, <Tên mảng a>  + <số nguyên y>, <Tên mảng a>  + <số nguyên z>): 
+                   ----> Lấy các phần tử lấy từ mảng a bắt đầu lấy từ vị trí y đến vị trí z - 1 và chèn vào vị trí x của vector hiện tại.
+
+15/ swap(<vector x>): Hoán đổi các phần tử của vector hiện tại & vector x cho nhau.
 
 
 
