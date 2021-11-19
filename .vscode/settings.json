@@ -21,7 +21,9 @@
   "files.associations": {
     "iostream": "cpp",
     "typeindex": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "new": "cpp",
+    "cmath": "cpp"
   },
  
 }

@@ -23,17 +23,16 @@ void menu();
 
 int main()
 {
-
     menu();
     return 0;
 }
 
 void menu()
 {
-    book *b = (book *)malloc(sizeof(book));
+    book *b;
+    int n, key;
+    b = (book *)malloc(sizeof(book));
 
-    int n;
-    short key;
     bool exit = false;
     do
     {
@@ -46,15 +45,15 @@ void menu()
         printf("\n#\t6. Save file.                                #");
         printf("\n#\t0. Exit program.                             #");
         printf("\n######################################################");
-        printf("\n\t->Enter key: ");
+        printf("\n\t-> Enter key: ");
         scanf("%d", &key);
 
         switch (key)
         {
         case 0:
             printf("\nExit successfully :v");
+            press_anykey();
             exit = true;
-            press_anykey;
             break;
         case 1:
 
@@ -134,7 +133,6 @@ void enter_book_list(book *&input, int &quantity)
 
 void print_book_list(book *output, int quantity)
 {
-    printf("\n\tBook Information\n");
     for (int i = 0; i < quantity; i++)
     {
         printf("\n\tBook's information [%d]\n", i + 1);

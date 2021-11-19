@@ -5,6 +5,12 @@ BÀI 4:
 BÀI 5: Đếm số lần xuất hiện của từng phần tử phân biệt trong mảng 1 chiều 
 BÀI 6: Kiểm tra số nguyên dương n có phải là SỐ ĐỐI XỨNG hay không ?
 BÀI 7: Kiểm tra số nguyên dương n có phải là SỐ SIÊU NGUYÊN TỐ hay không ?	
+BÀI 8: Đếm số lần xuất hiện của từng phần tử phân biệt trong mảng 1 chiều
+BÀI 9: Giải bài tập mảng động - Xóa các SỐ NGUYÊN TỐ trong mảng 1 chiều
+BÀI 10: thêm giá trị x vào sau phần tử là SỐ NGUYÊN TỐ trong mảng 1 chiều động 
+BÀI 11: 
+
+
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 BÀI 5: Đếm số lần xuất hiện của từng phần tử phân biệt trong mảng 1 chiều
 VD: 
@@ -19,6 +25,7 @@ Phần tử 	Số lần xuất hiện
 
 Bước 1: Đi tìm các phần tử phân biệt trong cái mảng ban đầu.
 Bước 2: Duyệt từng phần tử phân biệt với mảng ban đầu để tìm số lần xuất hiện.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 BÀI 6: Kiểm tra số nguyên dương n có phải là SỐ ĐỐI XỨNG hay không ?
@@ -58,13 +65,26 @@ Cứ thế kiểm tra cho đến khi:
 + Trong lúc kiểm tra mà có một số nào đó không phải số nguyên tố thì dừng và kết luận 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-BÀI 8: 
-
-
-Đếm số lần xuất hiện của từng phần tử phân biệt trong mảng 1 chiều
+BÀI 8: Đếm số lần xuất hiện của từng phần tử phân biệt trong mảng 1 chiều
 
 Bước 1: kiểm tra số đó có phải là phần tử phân biệt hay không
 bước 2: đếm số lần xuất hiện 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+BÀI 9: Giải bài tập mảng động - Xóa các SỐ NGUYÊN TỐ trong mảng 1 chiều
+B1: nhập vào các phần tử cho mảng
+B2: duyệt qua các phần tử trong mảng - nếu phần tử đó là SNT thì xoá rồi sau đó
+resize mảng động a với n giảm đi 1 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+BÀI 10: thêm giá trị x vào sau phần tử là SỐ NGUYÊN TỐ trong mảng 1 chiều động 
+B1: nhập vào các phần tử cho mảng
+B2: duyệt qua các phần tử trong mảng - nếu phần tử đó là SNT thì resize mảng động a với n + 1 rồi sau đó
+thêm x sau phần tử đó
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
