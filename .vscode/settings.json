@@ -23,7 +23,13 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "new": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "coroutine": "cpp",
+    "cstddef": "cpp",
+    "ranges": "cpp",
+    "functional": "cpp",
+    "*.tcc": "cpp"
   },
+  "C_Cpp.errorSquiggles": "Disabled",
  
 }

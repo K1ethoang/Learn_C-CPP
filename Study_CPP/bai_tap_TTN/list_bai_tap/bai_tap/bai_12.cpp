@@ -1,14 +1,12 @@
-// ! BÀI 10: thêm giá trị x vào sau phần tử là SỐ NGUYÊN TỐ trong mảng 1 chiều động ;>
+// ! BÀI 12:  các phần tử là SỐ SIÊU NGUYÊN TỐ trong mảng 1 chiều số nguyên
 #include <iostream>
-#include <windows.h>
 using namespace std;
 
 void input_array(int *a, int n);
 void output_array(int *a, int n);
-void add_one_element(int *&a, int &n, int add_pos, int x);
+void del_one_element(int *&a, int &n, int del_pos);
 bool check_prime_number(int n);
-void handle(int *&a, int &n, int x);
-void loading();
+void handle(int *&a, int &n);
 
 int main()
 {
@@ -21,17 +19,11 @@ int main()
     input_array(a, n);
     cout << "\n\tImported elements\n";
     output_array(a, n);
-    cout << "\nEnter number need to add after prime number: ";
-    cin >> x;
-
-    loading();
-    cout << "\n\tResult\n";
-    handle(a, n, x);
+    cout << "\n\tAfter deleting super prime number in array\n";
+    handle(a, n);
     output_array(a, n);
-    cout << "\n\tProgram Finished :>";
 
     delete[] a;
-    system("pause");
     return 0;
 }
 
@@ -59,29 +51,27 @@ void output_array(int *a, int n)
     }
 }
 
-void add_one_element(int *&a, int &n, int add_pos, int x)
+void del_one_element(int *&a, int &n, int del_pos)
 {
-    // tăng mảng trước rồi mới thêm
+    for (int i = del_pos + 1; i < n; i++)
+    {
+        *(a + i - 1) = *(a + i);
+    }
+    n--;
+    // giảm kích thước mảng động
     int *temp = new int[n];
     for (int i = 0; i < n; i++)
     {
-        *(temp + i) = *(a + i); // đổ các phần tử mảng a qua cho mảng temp
+        *(temp + i) = *(a + i);
     }
 
     delete[] a;
-    a = new int[n + 1];
+
+    a = new int[n];
     for (int i = 0; i < n; i++)
     {
         *(a + i) = *(temp + i);
     }
-
-    // Thêm 1 phần tử vào mang a
-    for (int i = n - 1; i >= add_pos; i--)
-    {
-        *(a + i + 1) = *(a + i);
-    }
-    *(a + add_pos) = x;
-    n++;
 
     delete[] temp;
 }
@@ -105,31 +95,25 @@ bool check_prime_number(int n)
     return true;
 }
 
-void handle(int *&a, int &n, int x)
+void handle(int *&a, int &n)
 {
     for (int i = 0; i < n; i++)
     {
-        if (check_prime_number(*(a + i)) == true)
+        bool check = true;
+        while (*(a + i) != 0) // check super prime number
         {
-            add_one_element(a, n, i + 1, x);
-            i++; // tăng giá trị i lên 1 đơn vị để bỏ qua vị trí x (nhập từ bàn phím) mà kiểm tra SNT
+            if (check_prime_number(*(a + i)) == true)
+                *(a + i) /= 10; // giảm đi 1 số phía bên phải
+            else
+            {
+                check = false;
+                break;
+            }
+        }
+        if (check == true)
+        {
+            del_one_element(a, n, i);
+            i--; // kiểm tra lại vị trí vừa xoá
         }
     }
-}
-
-void loading()
-{
-    system("cls");
-    for (int i = 10; i < 100; i += 20)
-    {
-        cout << "\nLoading " << i << "%";
-        for (int j = 0; j < 5; j++)
-        {
-            cout << ".";
-            Sleep(100);
-        }
-        Sleep(500);
-        system("cls");
-    }
-    system("cls");
 }

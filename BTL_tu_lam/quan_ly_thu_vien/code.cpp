@@ -127,7 +127,7 @@ void enter_book_list(book *&input, int &quantity)
     for (int i = 0; i < quantity; i++)
     {
         printf("\n\tEnter book [%d]\n", i + 1);
-        enter_one_book(&*(input + i));
+        enter_one_book(input + i);
     }
 }
 

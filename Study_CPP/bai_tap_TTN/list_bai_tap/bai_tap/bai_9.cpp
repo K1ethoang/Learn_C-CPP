@@ -1,3 +1,5 @@
+//  ! BÀI 9: Giải bài tập mảng động - Xóa các SỐ NGUYÊN TỐ trong mảng 1 chiều
+
 #include <iostream>
 using namespace std;
 
