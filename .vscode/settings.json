@@ -28,7 +28,11 @@
     "cstddef": "cpp",
     "ranges": "cpp",
     "functional": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "iosfwd": "cpp",
+    "cstdio": "cpp",
+    "ostream": "cpp",
+    "iomanip": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
  
