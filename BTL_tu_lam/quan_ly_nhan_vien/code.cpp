@@ -24,7 +24,7 @@ struct NhanVien
 {
 	NhanVien() // hàm khởi tạo (Constructor)
 	{
-		this->maSo = 0;
+		this->maSo = -1;
 		this->ho = "";
 		this->ten = "";
 		this->noiSinh = "";
@@ -290,16 +290,36 @@ void nhapDanhSach(NhanVien *&input, int &n)
 			cout << "\nSo luong khong hop le :v";
 			pressAnyKey();
 		}
-		else
-		{
-			input = new NhanVien[n];
-			for (int i = 0; i < n; i++)
-			{
-				cout << "\n\tNhap nhan vien thu [" << i + 1 << "]\n";
-				nhap1NhanVien(input + i);
-			}
-		}
+		// else
+		// {
+		// 	input = new NhanVien[n];
+		// 	for (int i = 0; i < n; i++)
+		// 	{
+		// 		cout << "\n\tNhap nhan vien thu [" << i + 1 << "]\n";
+		// 		nhap1NhanVien(input + i);
+		// 	}
+		// }
 	} while (n <= 0);
+
+	input = new NhanVien[n];
+	for (int i = 0; i < n; i++)
+	{
+		cout << "\n\tNhap nhan vien thu [" << i + 1 << "]\n";
+		nhap1NhanVien(input + i);
+		for (int j = i - 1; j >= 0; j--)
+		{
+			do
+			{
+				if ((input + j)->maSo == (input + i)->maSo)
+				{
+					cout << "\n\tMa so cua nhan vien ban vua nhap trung voi ma so nhan vien thu [" << j << "]\n";
+					cout << "\n->Moi ban nhap lai ma so khac: ";
+					cin >> (input + i)->maSo;
+					pressAnyKey();
+				}
+			} while ((input + j)->maSo == (input + i)->maSo);
+		}
+	}
 }
 
 void xuatDanhSach(NhanVien *output, int n)
