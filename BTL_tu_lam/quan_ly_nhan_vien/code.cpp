@@ -239,19 +239,19 @@ void menu()
 
 void nhap1NhanVien(NhanVien *input)
 {
-	cout << "\nNhap ma so: ";
+	cout << "\n(?) Nhap ma so: ";
 	cin >> input->maSo;
 	fflush(stdin);
-	cout << "\nNhap ho: ";
+	cout << "\n(?) Nhap ho: ";
 	getline(cin, input->ho);
-	cout << "\nNhap ten: ";
+	cout << "\n(?) Nhap ten: ";
 	getline(cin, input->ten);
-	cout << "\nNhap ngay sinh (dd/mm/yyyy - ngan cach bang khoang cach): ";
+	cout << "\n(?) Nhap ngay sinh (dd/mm/yyyy - ngan cach bang khoang cach): ";
 	cin >> input->ngaySinh.ngay >> input->ngaySinh.thang >> input->ngaySinh.nam;
-	cout << "\nNhap noi sinh: ";
+	cout << "\n(?) Nhap noi sinh: ";
 	fflush(stdin);
 	getline(cin, input->noiSinh);
-	cout << "\nLuong (Tinh theo $): ";
+	cout << "\n(?) Luong (Tinh theo $): ";
 	cin >> input->luong;
 }
 
@@ -290,15 +290,6 @@ void nhapDanhSach(NhanVien *&input, int &n)
 			cout << "\nSo luong khong hop le :v";
 			pressAnyKey();
 		}
-		// else
-		// {
-		// 	input = new NhanVien[n];
-		// 	for (int i = 0; i < n; i++)
-		// 	{
-		// 		cout << "\n\tNhap nhan vien thu [" << i + 1 << "]\n";
-		// 		nhap1NhanVien(input + i);
-		// 	}
-		// }
 	} while (n <= 0);
 
 	input = new NhanVien[n];
@@ -312,8 +303,8 @@ void nhapDanhSach(NhanVien *&input, int &n)
 			{
 				if ((input + j)->maSo == (input + i)->maSo)
 				{
-					cout << "\n\tMa so cua nhan vien ban vua nhap trung voi ma so nhan vien thu [" << j << "]\n";
-					cout << "\n->Moi ban nhap lai ma so khac: ";
+					cout << "\n\tMa so cua nhan vien ban vua nhap trung voi ma so nhan vien thu [" << j + 1 << "]\n";
+					cout << "\n-> Moi ban nhap lai ma so khac: ";
 					cin >> (input + i)->maSo;
 					pressAnyKey();
 				}
@@ -334,7 +325,7 @@ void xuatDanhSach(NhanVien *output, int n)
 // cấp phát lại vùng nhớ cho mảng động
 void resizeDanhSach(NhanVien *&nv, int before, int after)
 {
-	NhanVien *temp = new NhanVien[before];
+	NhanVien *temp = new NhanVien[before]; // kích thước bằng với mảng ban đầu
 	for (int i = 0; i < before; i++)
 	{
 		*(temp + i) = *(nv + i); // chuyển các dữ liệu qua mảng temp
@@ -353,7 +344,7 @@ void them1NhanVien(NhanVien *&add, int &n)
 	resizeDanhSach(add, n, n + 1);
 	nhap1NhanVien(add + n);
 	do
-	{
+	{ // kiểm tra xem mã số nv vừa thêm đã tồn tại chưa
 		if (kiemTraMaSo(add, n, (add + n)->maSo) != -1)
 		{
 			cout << "\nDa ton tai nhan vien co ma so nay :))";
@@ -361,9 +352,10 @@ void them1NhanVien(NhanVien *&add, int &n)
 			cin >> (add + n)->maSo;
 			pressAnyKey();
 		}
-		else
-			cout << "\n\tThem nhan vien thanh cong :>";
+
 	} while (kiemTraMaSo(add, n, (add + n)->maSo) != -1);
+	cout << "\n\tThem nhan vien thanh cong :>";
+	xuat1NhanVienTheoHangDoc(add + n);
 	n++;
 }
 
@@ -384,15 +376,16 @@ void xoa1NhanVienTheoMaSo(NhanVien *&del, int &n)
 	cout << "\nNhap ma so cua nhan vien can xoa: ";
 	cin >> maSo;
 
-	bool check = false;				   // kiểm tra xem có nhân viên đó không
-	int i = kiemTraMaSo(del, n, maSo); // vị trí của mã số trùng khớp
-	if (i != -1)
+	bool check = false;				   // biên kiểm tra xem có nhân viên đó không
+	int i = kiemTraMaSo(del, n, maSo); // vị trí của mã số kiểm tra
+	if (i == -1)
+
+		check = false;
+	else
 	{
 		xoa1NhanvienBatKi(del, n, i);
 		check = true;
 	}
-	else
-		check = false;
 
 	if (check == false)
 		cout << "\nkhong co nhan vien trung khop :v";
@@ -421,14 +414,14 @@ void timNhanVienTheoMaSo(NhanVien *nv, int n)
 void timNhanVienTheoTen(NhanVien *nv, int n)
 {
 	bool check = false;
-	string nameToFind;
-	fflush(stdin);
+	string tenCanTim;
 	cout << "\nNhap ten can tim: ";
-	getline(cin, nameToFind);
+	cin >> tenCanTim;
+
 	for (int i = 0; i < n; i++)
 	{
 
-		if ((nv + i)->ten.find(nameToFind) != string::npos)
+		if ((nv + i)->ten.find(tenCanTim) != string::npos)
 		{
 			check = true;
 			xuat1NhanVienTheoHangDoc(nv + i);
@@ -476,9 +469,9 @@ void luuDanhSach(NhanVien *ds, int n)
 	else
 	{
 
+		check = true;
 		for (int i = 0; i < n; i++)
 		{
-			check = true;
 			file << (ds + i)->maSo << ", ";
 			file << (ds + i)->ho << ", ";
 			file << (ds + i)->ten << ", ";
