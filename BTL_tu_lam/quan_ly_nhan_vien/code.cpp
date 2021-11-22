@@ -123,11 +123,45 @@ void menu()
 			break;
 
 		case 1:
-			check = true;
-			cout << "\n\t\tBan da chon Them danh sach nhan vien\n";
-			nhapDanhSach(nv, soLuong);
-			pressAnyKey();
+
+			while (check)
+			{
+				char luaChon;
+				do
+				{
+					cout << "\n\tBan co chac la nhap lai danh sach khong? (y/n): ";
+					cin >> luaChon;
+					if ((luaChon != 'y') && (luaChon != 'n'))
+					{
+						cout << "\n\tKhong hop le !";
+						pressAnyKey();
+					}
+				} while ((luaChon != 'y') && (luaChon != 'n'));
+
+				if (luaChon == 'y')
+				{
+					check = false;
+					pressAnyKey();
+					break;
+				}
+				else
+				{
+					pressAnyKey();
+					break;
+				}
+			}
+
+			if (check == false)
+			{
+
+				check = true;
+				cout << "\n\t\tBan da chon Them danh sach nhan vien\n";
+				nhapDanhSach(nv, soLuong);
+				pressAnyKey();
+				break;
+			}
 			break;
+
 		case 2:
 			if (check)
 			{
@@ -295,7 +329,7 @@ void nhapDanhSach(NhanVien *&input, int &n)
 	input = new NhanVien[n];
 	for (int i = 0; i < n; i++)
 	{
-		cout << "\n\tNhap nhan vien thu [" << i + 1 << "]\n";
+		cout << "\n\t-> Nhap nhan vien thu [" << i + 1 << "]\n";
 		nhap1NhanVien(input + i);
 		for (int j = i - 1; j >= 0; j--)
 		{

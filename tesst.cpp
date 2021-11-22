@@ -14,10 +14,14 @@ int kiemTraMaSo(int a[], int n, int maSo)
 }
 int main()
 {
-    int a[] = {1, 4, 5, 7};
-
-    cout << kiemTraMaSo(a, 4, 2);
-    cout << kiemTraMaSo(a, 4, 4);
+    char kiet;
+    cin >> kiet;
+    if (kiet == 'y')
+    {
+        cout << "dung";
+    }
+    else
+        cout << "sai";
 
     return 0;
 }
