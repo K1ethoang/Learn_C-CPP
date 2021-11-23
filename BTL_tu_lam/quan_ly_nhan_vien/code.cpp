@@ -413,7 +413,6 @@ void xoa1NhanVienTheoMaSo(NhanVien *&del, int &n)
 	bool check = false;				   // biên kiểm tra xem có nhân viên đó không
 	int i = kiemTraMaSo(del, n, maSo); // vị trí của mã số kiểm tra
 	if (i == -1)
-
 		check = false;
 	else
 	{
