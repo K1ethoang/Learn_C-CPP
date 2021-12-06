@@ -1,0 +1,2 @@
+Ma so |Ho        |Ten       |Ngay sinh |Noi sinh       |Luong     
+1     |hoang     |kiet      |23 9 2003|dong nai       |20003     

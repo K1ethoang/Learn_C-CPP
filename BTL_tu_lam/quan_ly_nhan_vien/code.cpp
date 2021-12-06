@@ -107,7 +107,7 @@ void menu()
 		cout << "\n\t|   5. Tim nhan vien theo ma so                                    |";
 		cout << "\n\t|   6. Tim nhan vien theo ten                                      |";
 		cout << "\n\t|   7. Bang luong cua nhan vien trong cong ty (giam dan)           |";
-		cout << "\n\t|   8. Luu danh sach vao file \"danh_sach_sinh_vien.txt\"            |";
+		cout << "\n\t|   8. Luu danh sach vao file \"danhSachNhanVien.txt\"               |";
 		cout << "\n\t|   0. Thoat chuong trinh                                          |";
 		cout << "\n\t+ -------------------------- Cam on <3 --------------------------- +";
 
@@ -194,7 +194,6 @@ void menu()
 		case 4:
 			if (check)
 			{
-
 				cout << "\n\t\tBan da chon Xoa 1 nhan vien theo ma so\n";
 				xoa1NhanVienTheoMaSo(nv, soLuong);
 				pressAnyKey();
@@ -366,7 +365,7 @@ void resizeDanhSach(NhanVien *&nv, int before, int after)
 	}
 	delete[] nv;			  // xoá đi vùng nhớ cũ
 	nv = new NhanVien[after]; // cấp phát vùng nhớ mới
-	for (int i = 0; i < before; i++)
+	for (int i = 0; i < after; i++)
 	{
 		*(nv + i) = *(temp + i); // trả dữ liệu lại mảng ban đầu
 	}
@@ -432,7 +431,6 @@ void timNhanVienTheoMaSo(NhanVien *nv, int n)
 	cin >> maSoCanTim;
 	for (int i = 0; i < n; i++)
 	{
-
 		if ((nv + i)->maSo == maSoCanTim)
 		{
 			check = true;
@@ -493,7 +491,7 @@ void sapXepGiamDanTheoLuong(NhanVien *nv, int n)
 void luuDanhSach(NhanVien *ds, int n)
 {
 	ofstream file;
-	file.open("danh_sach_sinh_vien.txt", ios_base::out);
+	file.open("danhSachNhanVien.txt", ios_base::out);
 
 	bool check = false;
 
@@ -501,16 +499,17 @@ void luuDanhSach(NhanVien *ds, int n)
 		cout << "\nLoi khi mo file";
 	else
 	{
-
+		file << left << setw(6) << "Ma so" << left << setw(11) << "|Ho " << left << setw(11) << "|Ten " << left << setw(11) << "|Ngay sinh " << left << setw(16) << "|Noi sinh " << left << setw(11) << "|Luong " << endl;
 		check = true;
 		for (int i = 0; i < n; i++)
 		{
-			file << (ds + i)->maSo << ", ";
-			file << (ds + i)->ho << ", ";
-			file << (ds + i)->ten << ", ";
-			file << (ds + i)->ngaySinh.ngay << " " << (ds + i)->ngaySinh.thang << " " << (ds + i)->ngaySinh.nam << ", ";
-			file << (ds + i)->noiSinh << ", ";
-			file << (ds + i)->luong << endl;
+
+			file << left << setw(6) << (ds + i)->maSo;
+			file << "|" << left << setw(10) << (ds + i)->ho;
+			file << "|" << left << setw(10) << (ds + i)->ten;
+			file << "|" << left << (ds + i)->ngaySinh.ngay << " " << (ds + i)->ngaySinh.thang << " " << (ds + i)->ngaySinh.nam << " ";
+			file << "|" << left << setw(15) << (ds + i)->noiSinh;
+			file << "|" << left << setw(10) << (ds + i)->luong << endl;
 		}
 	}
 

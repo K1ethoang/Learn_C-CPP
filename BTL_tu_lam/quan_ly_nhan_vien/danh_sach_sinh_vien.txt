@@ -1,2 +1,0 @@
-1, Phan, Tranh, 8 10 2003, Tien Giang, 1000
-2, Hoang, Kiet, 23 9 2003, Dong Nai, 2000
