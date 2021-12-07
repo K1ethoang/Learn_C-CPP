@@ -367,7 +367,10 @@ void resizeDanhSach(NhanVien *&nv, int before, int after)
 	nv = new NhanVien[after]; // cấp phát vùng nhớ mới
 	for (int i = 0; i < after; i++)
 	{
-		*(nv + i) = *(temp + i); // trả dữ liệu lại mảng ban đầu
+		if (i == before)
+			return;
+		else
+			*(nv + i) = *(temp + i); // trả dữ liệu lại mảng ban đầu
 	}
 	delete[] temp; // xoá vùng nhớ của con trỏ temp;
 }
