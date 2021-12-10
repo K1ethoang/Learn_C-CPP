@@ -73,15 +73,22 @@ int main()
 
 void menu()
 {
-    short choose;
-    int n, a[100];
-    bool exit = false, isInputArray = true;
+    int choose, n, a[100];
+    bool exit = false, isInputArray = false;
     do
     {
+        system("cls");
         printf("----------------------------- MENU -----------------------------");
-        printf("\n  1. Nhap mang");
-        printf("\n  2. Xuat mang");
-        printf("\n  0. Thoat chuong trinh");
+        printf("\n|  1. Nhap mang");
+        printf("\n|  2. Xuat mang");
+        printf("\n|  3. Phan tu lon nhat va nho nhat cua");
+        printf("\n|  4. Vi tri phan tu duong nho nhat");
+        printf("\n|  5. Tong cua mang");
+        printf("\n|  6. Tinh trung binh cong, trung binh nhan");
+        printf("\n|  7. Tim 1 phan tu x");
+        printf("\n|  8. Sap xep mang tang dan, giam dan");
+        printf("\n|  9. Xuat day dao nguoc cua day ban dau");
+        printf("\n|  0. Thoat chuong trinh");
         printf("\n---------------------------- <3<3<3 ----------------------------");
 
         printf("\n  Nhap lua chon: ");
@@ -91,29 +98,109 @@ void menu()
         {
         case 0:
             exit = true;
-            printf("\n\tBan da chon thoat chuong trinh");
+            printf("\n\t\tTHOAT CHUONG TRINH THANH CONG");
             pressAnyKey();
             break;
         case 1:
-
             isInputArray = true;
+            printf("\n\t\tNHAP MANG\n");
             do
             {
                 printf("\nNhap n (0 < n <= 100): ");
                 scanf("%d", &n);
                 if (n < 1 || n > 100)
                 {
-                    printf("\n\t\t(!) NHAP LAI (!)");
+                    printf("\n\t(!) Nhap lai (!)");
                     pressAnyKey();
                 }
             } while (n < 1 || n > 100);
             inputArray(a, n);
+            pressAnyKey();
             break;
         case 2:
-            outputArray(a, n);
+            if (isInputArray)
+            {
+                printf("\n\t\tXUAT MANG\n");
+                outputArray(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 3:
+            if (isInputArray)
+            {
+                printf("\n\t\tPHAN TU LON NHAT VA NHO NHAT");
+                findMaxAndMinElements(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 4:
+            if (isInputArray)
+            {
+                printf("\n\t\tVI TRI PHAN TU DUONG NHO NHAT\n");
+                outputArray(a, n);
+                findPostionOfMinPositiveElement(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 5:
+            if (isInputArray)
+            {
+                printf("\n\t\tTONG CUA MANG");
+                printf("\nTong la: %d", sumOfArray(a, n));
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 6:
+            if (isInputArray)
+            {
+                printf("\n\t\tTINH TRUNG BINH CONG, TRUNG BINH NHAN");
+                averageAndMultiplyAverage(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 7:
+            if (isInputArray)
+            {
+                printf("\n\t\tTIM 1 PHAN TU X");
+                findXElement(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 8:
+            if (isInputArray)
+            {
+                printf("\n\t\tSAP XEP MANG TANG DAN, GIAM DAN");
+                sortAscendingAndDescending(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 9:
+            if (isInputArray)
+            {
+                printf("\n\t\tDAY DAO NGUOC CUA DAY BAN DAU\n");
+                outputReverseArray(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
         default:
+            printf("\n\t(!) Khong xac dinh (!)");
+            pressAnyKey();
             break;
         }
     } while (!exit);
@@ -193,7 +280,7 @@ void findPostionOfMinPositiveElement(int a[], int n)
     }
 
     if (hasMinElement)
-        printf("\nVi tri phan tu duong nho nhat: %d", minIndex);
+        printf("\nVi tri phan tu duong nho nhat: %d", minIndex + 1);
     else
         printf("\nKhong co phan tu duong nho nhat");
 }
@@ -253,7 +340,7 @@ void swap(int &a, int &b)
     b = temp;
 }
 
-void sortAscendingAndDescending(int a[], int n)
+void sortAscendingAndDescending(int a[], int n) // todo : xem lại hàm vì nó sort rồi thay đổi luôn
 {
     // tang dan -> selection sort
     for (int i = 0; i < n - 1; i++)

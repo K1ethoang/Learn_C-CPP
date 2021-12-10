@@ -36,5 +36,6 @@
     "bitset": "cpp",
     "random": "cpp"
   },
-  "C_Cpp.errorSquiggles": "Disabled"
+  "C_Cpp.errorSquiggles": "Disabled",
+  "todo-tree.tree.scanMode": "current file"
 }
