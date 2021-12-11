@@ -88,6 +88,14 @@ void menu()
         printf("\n|  7. Tim 1 phan tu x");
         printf("\n|  8. Sap xep mang tang dan, giam dan");
         printf("\n|  9. Xuat day dao nguoc cua day ban dau");
+        printf("\n|  10. Them 1 phan tu");
+        printf("\n|  11. Xoa 1 phan tu");
+        printf("\n|  12. So phan tu duong va tong cua cac phan tu duong");
+        printf("\n|  13. Kiem tra mang doi xung");
+        printf("\n|  14. Kiem tra mang co sap thu tu tang");
+        printf("\n|  15. So nguyen to co trong mang");
+        printf("\n|  16. So cap ma so sau bang tong 2 so truoc");
+        printf("\n|  17. So cap ai + aj (i != j) la so nguyen to");
         printf("\n|  0. Thoat chuong trinh");
         printf("\n---------------------------- <3<3<3 ----------------------------");
 
@@ -198,6 +206,117 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
+        case 10:
+            if (isInputArray)
+            {
+                printf("\n\t\tTHEM 1 PHAN TU\n");
+                outputArray(a, n);
+                int x, pos;
+                printf("\nNhap gia tri cua phan tu x: ");
+                scanf("%d", &x);
+                do
+                {
+                    printf("\nNhap vi tri k can them (0 < k <= %d): ", n + 1);
+                    scanf("%d", &pos);
+                    if (pos < 1 || pos > n + 1)
+                        printf("\n\t(!) Nhap lai (!)\n");
+                } while (pos < 1 || pos > n + 1);
+                addOneElement(a, n, x, pos);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 11:
+            if (isInputArray)
+            {
+                printf("\n\t\tXOA 1 PHAN TU\n");
+                int pos;
+                outputArray(a, n);
+                do
+                {
+                    printf("\nNhap vi tri k can xoa (0 < k <= %d): ", n);
+                    scanf("%d", &pos);
+                    if (pos < 1 || pos > n)
+                        printf("\n\t(!) Nhap lai (!)\n");
+                } while (pos < 1 || pos > n);
+                deleteOneElement(a, n, pos);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 12:
+            if (isInputArray)
+            {
+                printf("\n\t\tSO PHAN TU DUONG VA TONG\n");
+                countPositiveElementsAndOuputSum(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 13:
+            if (isInputArray)
+            {
+                printf("\n\t\tKIEM TRA MANG DOI XUNG\n");
+                outputArray(a, n);
+                if (checkPalindromicArray(a, n))
+                    printf("\nMang doi xung");
+                else
+                    printf("\nMang khong doi xung");
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 14:
+            if (isInputArray)
+            {
+                printf("\n\t\tKIEM TRA MANG CO SAP THU TU TANG\n");
+                outputArray(a, n);
+                if (checkAscendingArray(a, n))
+                    printf("\nMang sap xep tang");
+                else
+                    printf("\nMang khong sap xep tang");
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 15:
+            if (isInputArray)
+            {
+                printf("\n\t\tSO NGUYEN TO CO TRONG MANG\n");
+                outputArray(a, n);
+                printf("\nTrong mang co %d so nguyen to", countPrimeNumberInArray(a, n));
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 16:
+            if (isInputArray)
+            {
+                printf("\n\t\tSO CAP MA SO SAU BANG TONG 2 SO TRUOC\n");
+                outputArray(a, n);
+                printf("\nCo %d cap", countNextNumberEqualSumOfTwoPreviousNumber(a, n));
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 17:
+            if (isInputArray)
+            {
+                printf("\n\t\tSO CAP AI + AJ LA SO NGUYEN \n");
+                outputArray(a, n);
+                printf("\nCo %d cap", countElementIAddElementJIsPrimeNumber(a, n));
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
         default:
             printf("\n\t(!) Khong xac dinh (!)");
             pressAnyKey();
@@ -265,11 +384,11 @@ void findPostionOfMinPositiveElement(int a[], int n)
         if (a[i] > 0)
         {
             hasMinElement = true; // có phần tử dương
-            minIndex = i;
+            minIndex = i;         // vị trí phần tử dương đầu tiên
             minElement = a[minElement];
-            for (int j = minIndex; j < n; j++)
+            for (int j = minIndex + 1; j < n; j++)
             {
-                if (minElement > a[j])
+                if (minElement > a[j] && a[j] > 0)
                 {
                     minElement = a[j];
                     minIndex = j;
@@ -497,6 +616,7 @@ int countPrimeNumberInArray(int a[], int n)
 }
 
 // y16
+// todo: làm lại hàm
 int countNextNumberEqualSumOfTwoPreviousNumber(int a[], int n)
 {
     int count = 0;
