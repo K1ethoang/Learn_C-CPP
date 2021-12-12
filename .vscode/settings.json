@@ -55,7 +55,8 @@
     "regex": "cpp",
     "tuple": "cpp",
     "valarray": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "cstring": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "todo-tree.tree.scanMode": "current file"
