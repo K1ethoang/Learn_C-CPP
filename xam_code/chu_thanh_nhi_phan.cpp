@@ -26,12 +26,12 @@ void xuat(long long x)
 int main()
 {
 
-    int n;
+    int n = 0;
     std::cout << "Nhap so chuoi can chuyen -> Nhi phan: ";
     std::cin >> n;
 
     int j = 0;
-    while (j <= n)
+    while (n--)
     {
         std::string str;
         std::cout << "Nhap Chuoi " << j + 1 << " : ";
@@ -42,7 +42,7 @@ int main()
             xuat(chuyen_thanh_nhi_phan(str[i]));
             std::cout << " ";
         }
-        std::cout << std::endl;
+        std::cout << "\n\n";
         j++;
     }
 

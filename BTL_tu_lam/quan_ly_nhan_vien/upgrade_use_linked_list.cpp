@@ -12,7 +12,7 @@
 #include <string>
 using namespace std;
 
-// =========== Khao báo ============
+// =========== Khao báo cấu trúc============
 struct Date
 {
     int date, month, year;
@@ -72,6 +72,8 @@ void findEmployeeByName(List l);
 void swap(Employee &e1, Employee &e2);
 // sắp xếp danh sách giảm dần theo lương
 void sortDescendingBySalary(List l);
+// kiểm tra ngày tháng nhập vào
+void checkDayOfBirth(Employee e);
 
 // ! ============== thao tác với node =============
 // tạo danh sách liên kết các nhân viên
@@ -442,6 +444,10 @@ void sortDescendingBySalary(List l)
         if (maxIndex != t)
             swap(t->Data, maxIndex->Data);
     }
+}
+
+void checkDayOfBirth(Employee e)
+{
 }
 
 // * ================== Node ==================
