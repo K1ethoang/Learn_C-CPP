@@ -29,7 +29,6 @@ int main()
     }
 
     // tìm phần tử có giá trị lớn nhất của mảng
-
     max = a[0];
     for (int i = 1; i < n; i++)
     {

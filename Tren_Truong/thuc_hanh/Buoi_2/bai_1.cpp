@@ -8,6 +8,7 @@
 int main()
 {
     int n, a[100], count = 0;
+    bool isPrimeNumber;
     do
     {
         printf("\nNhap n (0 < n <= 100): ");
@@ -30,30 +31,33 @@ int main()
     // kiểm tra số nguyên tố có trong mảng
     for (int i = 0; i < n; i++)
     {
-        bool isPrime = true;
+        bool isPrimeNumber = true;
         if (a[i] < 2)
-            isPrime = false;
+            isPrimeNumber = false;
         else
         {
             if (a[i] == 2)
-                isPrime == true;
+                isPrimeNumber == true;
             else
             {
                 for (int j = 2; j <= sqrt(a[i]); j++)
                 {
                     if (a[i] % j == 0)
                     {
-                        isPrime = false;
+                        isPrimeNumber = false;
                         break;
                     }
                 }
             }
         }
-        if (isPrime)
+        if (isPrimeNumber)
             count++;
     }
 
-    printf("\n\nTrong mang co %d so nguyen to", count);
+    if (count != 0)
+        printf("\n\nTrong mang co %d so nguyen to", count);
+    else
+        printf("\n\nTrong mang khong co so nguyen to nao");
 
     return 0;
 }

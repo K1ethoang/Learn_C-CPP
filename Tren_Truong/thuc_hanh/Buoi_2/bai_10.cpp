@@ -18,12 +18,12 @@ int main()
     {
         printf("\nNhap a[%d]: ", i + 1);
         scanf("%d", &a[i]);
-        if (a[i] % 3 == 0 || a[i] % 7 == 0)
+        if ((a[i] % 3 == 0 || a[i] % 7 == 0) && (a[i] >= 1 && a[i] <= 100))
             count++;
     }
 
     printf("\n\t\tMANG DA NHAP\n");
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", a[i]);
     }

@@ -31,9 +31,9 @@ int main()
     printf("\nNhap y: ");
     scanf("%f", &y);
 
-    for (int i = x - 1; i < y; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (a[i] % 5 == 2)
+        if ((a[i] >= x && a[i] <= y) && a[i] % 5 == 2)
             count++;
     }
 
