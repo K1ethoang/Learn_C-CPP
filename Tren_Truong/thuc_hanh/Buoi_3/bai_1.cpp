@@ -26,11 +26,13 @@ int sumOfArray(int a[], int n);
 void averageAndMultiplyAverage(int a[], int n);
 // y7
 // tìm 1 phần tử (x nhập từ bàn phím)
-void findXElement(int a[], int n);
+int findXElement(int a[], int n, int x);
 // y8
 // hoán vị
 void swap(int &a, int &b);
 // sắp xếp tăng dần và giảm dần
+void ascendingSort(int a[], int n);
+void descendingSort(int a[], int n);
 void sortAscendingAndDescending(int a[], int n);
 // y9
 // xuất dãy đảo ngược của dãy ban đầu
@@ -78,7 +80,7 @@ void menu()
     do
     {
         system("cls");
-        printf("----------------------------- MENU -----------------------------");
+        printf("+---------------------------- MENU -----------------------------");
         printf("\n|  1. Nhap mang");
         printf("\n|  2. Xuat mang");
         printf("\n|  3. Phan tu lon nhat va nho nhat cua");
@@ -86,18 +88,19 @@ void menu()
         printf("\n|  5. Tong cua mang");
         printf("\n|  6. Tinh trung binh cong, trung binh nhan");
         printf("\n|  7. Tim 1 phan tu x");
-        printf("\n|  8. Sap xep mang tang dan, giam dan");
-        printf("\n|  9. Xuat day dao nguoc cua day ban dau");
-        printf("\n|  10. Them 1 phan tu");
-        printf("\n|  11. Xoa 1 phan tu");
-        printf("\n|  12. So phan tu duong va tong cua cac phan tu duong");
-        printf("\n|  13. Kiem tra mang doi xung");
-        printf("\n|  14. Kiem tra mang co sap thu tu tang");
-        printf("\n|  15. So nguyen to co trong mang");
-        printf("\n|  16. So cap ma so sau bang tong 2 so truoc");
-        printf("\n|  17. So cap ai + aj (i != j) la so nguyen to");
+        printf("\n|  8. Sap xep mang tang dan");
+        printf("\n|  9. Sap xep mang giam dan");
+        printf("\n|  10. Xuat day dao nguoc cua day ban dau");
+        printf("\n|  11. Them 1 phan tu");
+        printf("\n|  12. Xoa 1 phan tu");
+        printf("\n|  13. So phan tu duong va tong cua cac phan tu duong");
+        printf("\n|  14. Kiem tra mang doi xung");
+        printf("\n|  15. Kiem tra mang co sap thu tu tang");
+        printf("\n|  16. So nguyen to co trong mang");
+        printf("\n|  17. So cap ma so sau bang tong 2 so truoc");
+        printf("\n|  18. So cap ai + aj (i != j) la so nguyen to");
         printf("\n|  0. Thoat chuong trinh");
-        printf("\n---------------------------- <3<3<3 ----------------------------");
+        printf("\n+--------------------------- <3<3<3 ----------------------------");
 
         printf("\n  Nhap lua chon: ");
         scanf("%d", &choose);
@@ -180,7 +183,14 @@ void menu()
             if (isInputArray)
             {
                 printf("\n\t\tTIM 1 PHAN TU X");
-                findXElement(a, n);
+                int x;
+                printf("\nNhap phan tu x can tim kiem: ");
+                scanf("%d", &x);
+                int pos = findXElement(a, n, x);
+                if (pos != -1)
+                    printf("\nPhan tu x nam o vi tri thu: %d", pos + 1);
+                else
+                    printf("\nKhong co phan tu x trong mang");
             }
             else
                 printf("\n\t(!) Ban chua nhap mang (!)");
@@ -189,14 +199,26 @@ void menu()
         case 8:
             if (isInputArray)
             {
-                printf("\n\t\tSAP XEP MANG TANG DAN, GIAM DAN");
-                sortAscendingAndDescending(a, n);
+                printf("\n\t\tSAP XEP MANG TANG DAN\n\n");
+                ascendingSort(a, n);
+                outputArray(a, n);
             }
             else
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
         case 9:
+            if (isInputArray)
+            {
+                printf("\n\t\tSAP XEP MANG GIAM DAN\n\n");
+                descendingSort(a, n);
+                outputArray(a, n);
+            }
+            else
+                printf("\n\t(!) Ban chua nhap mang (!)");
+            pressAnyKey();
+            break;
+        case 10:
             if (isInputArray)
             {
                 printf("\n\t\tDAY DAO NGUOC CUA DAY BAN DAU\n");
@@ -206,7 +228,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 10:
+        case 11:
             if (isInputArray)
             {
                 printf("\n\t\tTHEM 1 PHAN TU\n");
@@ -227,7 +249,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 11:
+        case 12:
             if (isInputArray)
             {
                 printf("\n\t\tXOA 1 PHAN TU\n");
@@ -246,7 +268,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 12:
+        case 13:
             if (isInputArray)
             {
                 printf("\n\t\tSO PHAN TU DUONG VA TONG\n");
@@ -256,7 +278,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 13:
+        case 14:
             if (isInputArray)
             {
                 printf("\n\t\tKIEM TRA MANG DOI XUNG\n");
@@ -270,7 +292,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 14:
+        case 15:
             if (isInputArray)
             {
                 printf("\n\t\tKIEM TRA MANG CO SAP THU TU TANG\n");
@@ -284,7 +306,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 15:
+        case 16:
             if (isInputArray)
             {
                 printf("\n\t\tSO NGUYEN TO CO TRONG MANG\n");
@@ -295,7 +317,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 16:
+        case 17:
             if (isInputArray)
             {
                 printf("\n\t\tSO CAP MA SO SAU BANG TONG 2 SO TRUOC\n");
@@ -306,7 +328,7 @@ void menu()
                 printf("\n\t(!) Ban chua nhap mang (!)");
             pressAnyKey();
             break;
-        case 17:
+        case 18:
             if (isInputArray)
             {
                 printf("\n\t\tSO CAP AI + AJ LA SO NGUYEN \n");
@@ -430,25 +452,15 @@ void averageAndMultiplyAverage(int a[], int n)
 }
 
 // y7
-void findXElement(int a[], int n)
+int findXElement(int a[], int n, int x)
 {
-    bool hasXElement = false;
-    int x;
-    printf("\nNhap phan tu x can tim kiem: ");
-    scanf("%d", &x);
+    // Linear search
     for (int i = 0; i < n; i++)
     {
         if (a[i] == x)
-        {
-            hasXElement = true;
-            break;
-        }
+            return i;
     }
-
-    if (hasXElement)
-        printf("\nCo phan tu x trong mang");
-    else
-        printf("\nKhong co phan tu x trong mang");
+    return -1;
 }
 
 // y8
@@ -459,21 +471,24 @@ void swap(int &a, int &b)
     b = temp;
 }
 
-void sortAscendingAndDescending(int a[], int n) // todo : xem lại hàm vì nó sort rồi thay đổi luôn
+void ascendingSort(int a[], int n)
 {
-    // tang dan -> selection sort
-    for (int i = 0; i < n - 1; i++)
+    // tăng dần -> Insertion sort
+    for (int i = 1; i < n; i++)
     {
-        int minIndex = i;
-        for (int j = i; j < n; j++)
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key)
         {
-            if (a[j] < a[minIndex])
-                minIndex = j;
+            a[j + 1] = a[j];
+            j--;
         }
-        if (minIndex != i)
-            swap(a[i], a[minIndex]);
+        a[j + 1] = key;
     }
+}
 
+void descendingSort(int a[], int n)
+{
     // giam dan -> bubble sort
     for (int i = 0; i < n; i++)
     {
@@ -623,8 +638,14 @@ int countNextNumberEqualSumOfTwoPreviousNumber(int a[], int n)
     // bắt đầu duyệt từ phần tử thứ 3
     for (int i = 2; i < n; i++)
     {
-        if (a[i] == (a[i - 1] + a[i - 2]))
-            count++;
+        for (int j = i - 1; j > 0; j--)
+        {
+            for (int k = j - 1; k >= 0; k--)
+            {
+                if (a[j] + a[k] == a[i])
+                    count++;
+            }
+        }
     }
     return count;
 }
