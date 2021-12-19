@@ -1,6 +1,7 @@
 // Ho Ten: Hoang Gia Kiet
 // MSSV: 6251071049
 // Lop: IT-62
+// Em lam duoc het
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +34,6 @@ void swap(int &a, int &b);
 // sắp xếp tăng dần và giảm dần
 void ascendingSort(int a[], int n);
 void descendingSort(int a[], int n);
-void sortAscendingAndDescending(int a[], int n);
 // y9
 // xuất dãy đảo ngược của dãy ban đầu
 void outputReverseArray(int a[], int n);
@@ -188,7 +188,7 @@ void menu()
                 scanf("%d", &x);
                 int pos = findXElement(a, n, x);
                 if (pos != -1)
-                    printf("\nPhan tu x nam o vi tri thu: %d", pos + 1);
+                    printf("\nPhan tu x co trong mang");
                 else
                     printf("\nKhong co phan tu x trong mang");
             }
@@ -399,15 +399,13 @@ void findMaxAndMinElements(int a[], int n)
 // y4
 void findPostionOfMinPositiveElement(int a[], int n)
 {
-    int minElement = a[0], minIndex = 0;
-    bool hasMinElement = false;
+    int minElement, minIndex = -1;
     for (int i = 0; i < n; i++)
     {
         if (a[i] > 0)
         {
-            hasMinElement = true; // có phần tử dương
-            minIndex = i;         // vị trí phần tử dương đầu tiên
-            minElement = a[minElement];
+            minIndex = i; // vị trí phần tử dương
+            minElement = a[minIndex];
             for (int j = minIndex + 1; j < n; j++)
             {
                 if (minElement > a[j] && a[j] > 0)
@@ -420,13 +418,13 @@ void findPostionOfMinPositiveElement(int a[], int n)
         }
     }
 
-    if (hasMinElement)
-        printf("\nVi tri phan tu duong nho nhat: %d", minIndex + 1);
+    if (minIndex != -1)
+        printf("\nVi tri phan tu duong nho nhat: %d", minIndex);
     else
         printf("\nKhong co phan tu duong nho nhat");
 }
 
-// 5
+// y5
 int sumOfArray(int a[], int n)
 {
     int sum = 0;
@@ -588,6 +586,7 @@ bool checkPalindromicArray(int a[], int n)
     return true;
 }
 
+// y14
 bool checkAscendingArray(int a[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -631,7 +630,6 @@ int countPrimeNumberInArray(int a[], int n)
 }
 
 // y16
-// todo: làm lại hàm
 int countNextNumberEqualSumOfTwoPreviousNumber(int a[], int n)
 {
     int count = 0;
