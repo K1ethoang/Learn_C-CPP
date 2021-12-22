@@ -1,0 +1,14 @@
+Nguyen Van A,N15DCCN165,09/06/1997
+3
+Cau truc du lieu giai thuat-10
+Lap trinh C++-9
+Lap trinh huong doi tuong Java-10
+Nguyen Van B,N14DCCN189,10/07/1996
+2
+Co so du lieu-9.5
+Vi xu li-9
+Nguyen Van C,N13DCCN179,08/09/1995
+3
+Lap trinh mang-10
+Mang may tinh-9
+Lap trinh web-9
