@@ -1,7 +1,6 @@
 // Ho Ten: Hoang Gia Kiet
 // MSSV: 6251071049
 // Lop: IT-62
-// Em lam duoc het
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -83,7 +82,7 @@ void menu()
         printf("+---------------------------- MENU -----------------------------");
         printf("\n|  1. Nhap mang");
         printf("\n|  2. Xuat mang");
-        printf("\n|  3. Phan tu lon nhat va nho nhat cua");
+        printf("\n|  3. Phan tu lon nhat va nho nhat");
         printf("\n|  4. Vi tri phan tu duong nho nhat");
         printf("\n|  5. Tong cua mang");
         printf("\n|  6. Tinh trung binh cong, trung binh nhan");
@@ -419,7 +418,7 @@ void findPostionOfMinPositiveElement(int a[], int n)
     }
 
     if (minIndex != -1)
-        printf("\nVi tri phan tu duong nho nhat: %d", minIndex);
+        printf("\nVi tri phan tu duong nho nhat: %d (so %d)", minIndex + 1, minElement);
     else
         printf("\nKhong co phan tu duong nho nhat");
 }
@@ -623,7 +622,7 @@ int countPrimeNumberInArray(int a[], int n)
     int count = 0;
     for (int i = 0; i < n; i++)
     {
-        if (checkPrimeNumber(a[i]) == true)
+        if (checkPrimeNumber(a[i]))
             count++;
     }
     return count;
@@ -656,7 +655,7 @@ int countElementIAddElementJIsPrimeNumber(int a[], int n)
     {
         for (int j = i + 1; j < n; j++)
         {
-            if (checkPrimeNumber(a[i] + a[j]) == true)
+            if (checkPrimeNumber(a[i] + a[j])) // true
                 count++;
         }
     }
