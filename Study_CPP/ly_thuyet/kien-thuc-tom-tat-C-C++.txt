@@ -689,7 +689,7 @@ ostream: đây là lớp - có chức năng hỗ trợ chúng ta GHI dữ liệu
 
 =============== Các chế độ mở tệp tin file
 
-ios::in			Mở một tệp tin để đọc
+ios::in		Mở một tệp tin để đọc
 ios::out		Mở một tệp tin có sẵn để in
 ios::app		Mở một tệp tin có sẵn để thêm dữ liệu vào cuối tệp
 ios::ate		Mở một tệp tin và đặt con trỏ vào cuối tệp
@@ -712,7 +712,8 @@ seekg( pos_type position );
 - y: vị trí bắt đầu dịch
 	+ y = 0: đầu file <=> ios::beg <=> SEEK_SET
 	+ y = 1: vị trí hiện tại    <=> ios::cur <=> SEEK_CUR
-	+ y = 2: cuối file <=> ios::end <=> SEEK_END		
+	+ y = 2: cuối file <=> ios::end <=> SEEK_END	
+eof(); // true -> con trỏ chỉ vị chưa nằm cuối file	
  
 			
 
