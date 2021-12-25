@@ -58,6 +58,6 @@
     "variant": "cpp",
     "cstring": "cpp"
   },
-  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.errorSquiggles": "Enabled",
   "todo-tree.tree.scanMode": "current file"
 }
