@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 // =========== Khao báo cấu trúc============
@@ -27,7 +28,7 @@ struct Employee
         this->homeTown = "";
         this->DateOfBirth.date = 1;
         this->DateOfBirth.month = 1;
-        this->DateOfBirth.year = 1930;
+        this->DateOfBirth.year = 1;
         this->salaryAmountInDollar = 0.0;
     }
     string fullName, homeTown;
@@ -74,6 +75,9 @@ void swap(Employee &e1, Employee &e2);
 void sortDescendingBySalary(List l);
 // kiểm tra ngày tháng nhập vào
 void checkDayOfBirth(Employee e);
+// đọc 1 nhân viên
+void readOneEmployee(ifstream &fileIn, Employee &e);
+void importEmployees(ifstream &fileIn, List &l);
 
 // ! ============== thao tác với node =============
 // tạo danh sách liên kết các nhân viên
@@ -113,12 +117,15 @@ void menu()
     createList(l);
     bool isEnteredList = false, exit = false;
 
+    ifstream fileIn;
+    fileIn.open("./nhanVien.txt", ios::in);
+
     do
     {
         system("cls");
         cout << "\t+ ---------------- Chuong trinh quan ly nhan (Singly Liked List) ---------------- +";
         cout << "\n\t|   1. Them danh sach nhan vien";
-        cout << "\n\t|   2. Xem danh sach nhan vien";
+        cout << "\n\t|   2. Xem danh sach nhan vien (nhanVien.txt)";
         cout << "\n\t|   3. Them 1 nhan vien vao danh sach";
         cout << "\n\t|   4. xoa 1 nhan vien theo ma so";
         cout << "\n\t|   5. Tim nhan vien theo ma so";
@@ -139,44 +146,46 @@ void menu()
             break;
         case 1:
 
-            while (isEnteredList)
-            {
-                char checkAgain;
-                cout << "\n\t\t(!) Hay chac la ban da luu lai danh sach vua nhap (!)\n";
-                do
-                {
-                    cout << "\n\tBan co chac la nhap lai danh sach khong? (y/n): ";
-                    cin >> checkAgain;
-                    if ((checkAgain != 'y') && (checkAgain != 'n'))
-                    {
-                        cout << "\n\tKhong hop le !";
-                        pressAnyKey();
-                    }
-                } while ((checkAgain != 'y') && (checkAgain != 'n'));
+            // while (isEnteredList)
+            // {
+            //     char checkAgain;
+            //     cout << "\n\t\t(!) Hay chac la ban da luu lai danh sach vua nhap (!)\n";
+            //     do
+            //     {
+            //         cout << "\n\tBan co chac la nhap lai danh sach khong? (y/n): ";
+            //         cin >> checkAgain;
+            //         if ((checkAgain != 'y') && (checkAgain != 'n'))
+            //         {
+            //             cout << "\n\tKhong hop le !";
+            //             pressAnyKey();
+            //         }
+            //     } while ((checkAgain != 'y') && (checkAgain != 'n'));
 
-                if (checkAgain == 'y')
-                    isEnteredList = false;
-                else
-                {
-                    isEnteredList = true;
-                    break;
-                }
-            }
+            //     if (checkAgain == 'y')
+            //         isEnteredList = false;
+            //     else
+            //     {
+            //         isEnteredList = true;
+            //         break;
+            //     }
+            // }
 
-            if (!isEnteredList) // chưa nhập danh sách
-            {
-                isEnteredList = true;
-                cout << "\n\t\tThem danh sach nhan vien\n";
-                do
-                {
-                    cout << "\nNhap so nhan vien: ";
-                    cin >> n;
-                    if (n < 1)
-                        cout << "\n\t\t(!) Nhap lai (!)\n";
-                } while (n < 1);
-                inputEmployeeLinkedList(l, n);
-            }
-            pressAnyKey();
+            // if (!isEnteredList) // chưa nhập danh sách
+            // {
+            //     isEnteredList = true;
+            //     cout << "\n\t\tThem danh sach nhan vien\n";
+            //     do
+            //     {
+            //         cout << "\nNhap so nhan vien: ";
+            //         cin >> n;
+            //         if (n < 1)
+            //             cout << "\n\t\t(!) Nhap lai (!)\n";
+            //     } while (n < 1);
+            //     inputEmployeeLinkedList(l, n);
+            // }
+            // pressAnyKey();
+            // break;
+            importEmployees(fileIn, l);
             break;
         case 2:
             if (isEnteredList)
@@ -258,8 +267,8 @@ void menu()
             pressAnyKey();
             break;
         }
-
     } while (!exit);
+    fileIn.close();
     freeMemory(l);
 }
 
@@ -312,7 +321,7 @@ void outputOneEmployee(Employee e)
     cout << "\nHo va ten: " << e.fullName;
     cout << "\nQue quan: " << e.homeTown;
     cout << "\nNgay sinh: " << e.DateOfBirth.date << "/" << e.DateOfBirth.month << "/" << e.DateOfBirth.year;
-    cout << "\nLuong: " << e.salaryAmountInDollar;
+    cout << "\nLuong (dollar): " << e.salaryAmountInDollar;
 }
 
 void outputEmployeeLinkedList(List l)
@@ -448,6 +457,39 @@ void sortDescendingBySalary(List l)
 
 void checkDayOfBirth(Employee e)
 {
+}
+
+void readOneEmployee(ifstream &fileIn, Employee &e)
+{
+    fileIn >> e.code;
+    fileIn.seekg(2, ios::cur); // dịch con trỏ chỉ vị qua 2 byte
+
+    getline(fileIn, e.fullName, ',');
+    fileIn.seekg(1, ios::cur);
+
+    getline(fileIn, e.homeTown, ',');
+
+    fileIn >> e.DateOfBirth.date;
+    fileIn.seekg(1, ios::cur);
+
+    fileIn >> e.DateOfBirth.month;
+    fileIn.seekg(1, ios::cur);
+
+    fileIn >> e.DateOfBirth.year;
+    fileIn.seekg(1, ios::cur);
+
+    fileIn >> e.salaryAmountInDollar;
+}
+
+void importEmployees(ifstream &fileIn, List &l)
+{
+    while (!fileIn.eof()) // eof(): đến cuối file hay chưa -> end of file
+    {
+        Employee e;
+        readOneEmployee(fileIn, e);
+        Node *p = createNode(e);
+        addEmployeeNodeInTail(l, p);
+    }
 }
 
 // * ================== Node ==================
