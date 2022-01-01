@@ -139,6 +139,7 @@ void List::removeNodeTail() // xoá node cuối
     }
 }
 
+<<<<<<< HEAD
 void List::removeNodeByCode() // xoá theo mã số
 {
     int code;
@@ -166,62 +167,86 @@ void List::removeNodeByCode() // xoá theo mã số
                 }
                 prev = cur;
             }
-        }
-    }
-}
+            == == == =
+                         void List::removeNodeByCode(int _code) // xoá theo mã số
+            {
+                if (_code == pHead->eData.getCode())
+                    removeNodeHead();
+                else if (_code == pTail->eData.getCode())
+                    removeNodeTail();
+                else
+                {
+                    Node *prev = new Node();
+                    for (Node *cur = pHead->pNext; cur != NULL; cur = cur->pNext)
+                    {
+                        if (_code == cur->eData.getCode())
+                        {
+                            prev->pNext = cur->pNext;
+                            delete cur;
+                            --size;
+                            return;
+                        }
+                        prev = cur;
+>>>>>>> fabbf231852df40d6c2ed20761a25c72114aa4aa
+                    }
+                }
+            }
 
-void List::add()
-{
-    Employee e;
-    cin >> e;
-    while (existCode(e.getCode()))
-    {
-        int code;
-        cout << "\n\n\t\tDa ton tai nhan vien co ma so nay!\n";
-        cout << "\nNhap lai: ";
-        cin >> code;
-        e.setCode(code);
-    }
-    pushBack(e);
-    cout << "\n\n\t\tThem thanh cong nhan vien voi thong tin\n";
-    cout << e;
-}
+<<<<<<< HEAD
+            void List::add()
+            {
+                Employee e;
+                cin >> e;
+                while (existCode(e.getCode()))
+                {
+                    int code;
+                    cout << "\n\n\t\tDa ton tai nhan vien co ma so nay!\n";
+                    cout << "\nNhap lai: ";
+                    cin >> code;
+                    e.setCode(code);
+                }
+                pushBack(e);
+                cout << "\n\n\t\tThem thanh cong nhan vien voi thong tin\n";
+                cout << e;
+            }
 
-void List::findNodeByCode()
-{
-    int code;
-    bool exist = false;
-    cout << "\nNhap ma so nhan vien can tim: ";
-    cin >> code;
+            void List::findNodeByCode()
+            {
+                int code;
+                bool exist = false;
+                cout << "\nNhap ma so nhan vien can tim: ";
+                cin >> code;
 
-    for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
-    {
-        if (code == cur->eData.getCode())
-        {
-            cout << cur->eData;
-            exist = true;
-            return;
-        }
-    }
-    if (exist == false)
-        cout << "\n\n\t\tKhong tim thay!\n";
-}
+                for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
+                {
+                    if (code == cur->eData.getCode())
+                    {
+                        cout << cur->eData;
+                        exist = true;
+                        return;
+                    }
+                }
+                if (exist == false)
+                    cout << "\n\n\t\tKhong tim thay!\n";
+            }
 
-void List::findNodeByName()
-{
-    for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
-    {
-    }
-}
+            void List::findNodeByName()
+            {
+                for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
+                {
+                }
+            }
 
-void List::clear() // giải phóng bộ nhớ
-{
-    Node *cur = NULL;
-    while (pHead != NULL)
-    {
-        cur = pHead;
-        pHead = pHead->pNext;
-        delete cur;
-    }
-    setSize(0);
-}
+            == == == =
+>>>>>>> fabbf231852df40d6c2ed20761a25c72114aa4aa
+                         void List::clear() // giải phóng bộ nhớ
+            {
+                Node *cur = NULL;
+                while (pHead != NULL)
+                {
+                    cur = pHead;
+                    pHead = pHead->pNext;
+                    delete cur;
+                }
+                setSize(0);
+            }
