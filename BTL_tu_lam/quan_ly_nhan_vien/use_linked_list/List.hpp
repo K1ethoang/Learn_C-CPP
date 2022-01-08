@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Node.hpp"
+#include <cstring>
 
 class List
 {
@@ -20,13 +21,16 @@ public:
     bool existCode(int _code);
     void display();
     void pushBack(Employee value);
+    void removeNodeByCode();
     void removeNodeHead();
     void removeNodeTail();
-    void removeNodeByCode();
     void add();
     void findNodeByCode();
     void findNodeByName();
-    void clear();
+    string splitName(const string &fullname);
+    void sortDescendingBySalary();
+    void swap(Employee &e1, Employee &e2);
+    void saveFile();
 };
 
 List::List()
@@ -35,8 +39,17 @@ List::List()
     // nothing
 }
 
+// giải phóng vùng nhớ
 List::~List()
 {
+    Node *t = new Node();
+    while (pHead != NULL)
+    {
+        t = pHead;
+        pHead = pHead->pNext;
+        delete t;
+    }
+    size = 0;
 }
 
 Node *List::getHead()
@@ -89,6 +102,7 @@ void List::display()
     }
 }
 
+// thêm vào cuối ds
 void List::pushBack(Employee value)
 {
     Node *p = new Node(value);
@@ -139,7 +153,6 @@ void List::removeNodeTail() // xoá node cuối
     }
 }
 
-<<<<<<< HEAD
 void List::removeNodeByCode() // xoá theo mã số
 {
     int code;
@@ -162,91 +175,136 @@ void List::removeNodeByCode() // xoá theo mã số
                 {
                     prev->pNext = cur->pNext;
                     delete cur;
-                    --size;
+                    size--;
                     return;
                 }
                 prev = cur;
             }
-            == == == =
-                         void List::removeNodeByCode(int _code) // xoá theo mã số
-            {
-                if (_code == pHead->eData.getCode())
-                    removeNodeHead();
-                else if (_code == pTail->eData.getCode())
-                    removeNodeTail();
-                else
-                {
-                    Node *prev = new Node();
-                    for (Node *cur = pHead->pNext; cur != NULL; cur = cur->pNext)
-                    {
-                        if (_code == cur->eData.getCode())
-                        {
-                            prev->pNext = cur->pNext;
-                            delete cur;
-                            --size;
-                            return;
-                        }
-                        prev = cur;
->>>>>>> fabbf231852df40d6c2ed20761a25c72114aa4aa
-                    }
-                }
-            }
+        }
+    }
+}
 
-<<<<<<< HEAD
-            void List::add()
-            {
-                Employee e;
-                cin >> e;
-                while (existCode(e.getCode()))
-                {
-                    int code;
-                    cout << "\n\n\t\tDa ton tai nhan vien co ma so nay!\n";
-                    cout << "\nNhap lai: ";
-                    cin >> code;
-                    e.setCode(code);
-                }
-                pushBack(e);
-                cout << "\n\n\t\tThem thanh cong nhan vien voi thong tin\n";
-                cout << e;
-            }
+void List::add()
+{
+    Employee e;
+    cin >> e;
+    while (existCode(e.getCode()))
+    {
+        int code;
+        cout << "\n\n\t\tDa ton tai nhan vien co ma so nay!\n";
+        cout << "\nNhap lai: ";
+        cin >> code;
+        e.setCode(code);
+    }
+    pushBack(e);
+    cout << "\n\n\t\tThem thanh cong nhan vien voi thong tin\n";
+    cout << e;
+    size++;
+}
 
-            void List::findNodeByCode()
-            {
-                int code;
-                bool exist = false;
-                cout << "\nNhap ma so nhan vien can tim: ";
-                cin >> code;
+void List::findNodeByCode()
+{
+    int code;
+    bool exist = false;
+    cout << "\nNhap ma so nhan vien can tim: ";
+    cin >> code;
 
-                for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
-                {
-                    if (code == cur->eData.getCode())
-                    {
-                        cout << cur->eData;
-                        exist = true;
-                        return;
-                    }
-                }
-                if (exist == false)
-                    cout << "\n\n\t\tKhong tim thay!\n";
-            }
+    for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
+    {
+        if (code == cur->eData.getCode())
+        {
+            cout << cur->eData;
+            exist = true;
+            return;
+        }
+    }
+    if (exist == false)
+        cout << "\n\n\t\tKhong tim thay!\n";
+}
 
-            void List::findNodeByName()
-            {
-                for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
-                {
-                }
-            }
+string List::splitName(const string &fullname)
+{
+    string name;
+    int strLength = 0;
+    for (int i = fullname.length() - 1; i >= 0; i--)
+    {
+        strLength++;
+        if (fullname[i] == ' ')
+        {
+            // Hoang Gia Kiet -> Kiet
+            name = fullname.substr(i + 1, strLength - 1);
+            break;
+        }
+    }
+    return name;
+}
 
-            == == == =
->>>>>>> fabbf231852df40d6c2ed20761a25c72114aa4aa
-                         void List::clear() // giải phóng bộ nhớ
+void List::findNodeByName()
+{
+    string name;
+    bool exist = false;
+    cout << "\nNhap ten can tim: ";
+    cin >> name;
+    int i = 1;
+    for (Node *cur = pHead; cur != NULL; cur = cur->pNext)
+    {
+        // tách tên của nhân viên
+        string splitName = List::splitName(cur->eData.getFullName());
+        // so sánh chuỗi ko phân biệt hoa - thường
+        // c_str(): chuyển string về char
+        if (stricmp(name.c_str(), splitName.c_str()) == 0)
+        {
+            cout << "\n\n\t\tNhan vien thu " << i++ << endl;
+            cout << cur->eData;
+            exist = true;
+        }
+    }
+    if (exist == false)
+        cout << "\n\n\t\tKhong tim thay!\n";
+}
+
+void List::swap(Employee &e1, Employee &e2)
+{
+    Employee t = e1;
+    e1 = e2;
+    e2 = t;
+}
+
+void List::sortDescendingBySalary()
+{
+    // SelectionSort
+    for (Node *t = pHead; t != pTail; t = t->pNext)
+    {
+        Node *minPos = t;
+        for (Node *k = t->pNext; k != NULL; k = k->pNext)
+        {
+            if (minPos->eData.getSalary() < k->eData.getSalary())
             {
-                Node *cur = NULL;
-                while (pHead != NULL)
-                {
-                    cur = pHead;
-                    pHead = pHead->pNext;
-                    delete cur;
-                }
-                setSize(0);
+                minPos = k;
             }
+        }
+        if (minPos != t)
+        {
+            swap(t->eData, minPos->eData);
+        }
+    }
+}
+
+void List::saveFile()
+{
+    string fileName, fileType, file;
+    cout << "\nDat ten file can luu (viet lien - khong dau): ";
+    cin >> fileName;
+    cout << "\nDinh dang can luu (vd: txt,...): ";
+    cin >> fileType;
+    file = fileName + '.' + fileType;
+
+    ofstream fileout;
+    fileout.open(file, ios::out);
+    for (Node *t = pHead; t != NULL; t = t->pNext)
+    {
+        t->eData.write(fileout);
+        fileout << endl;
+    }
+    fileout.close();
+}

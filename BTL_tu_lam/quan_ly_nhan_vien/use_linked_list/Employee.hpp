@@ -19,12 +19,8 @@ public:
     friend ostream &operator<<(ostream &os, Employee e);
     int getCode();
     void setCode(int _code);
-    // string getFullName();
-    // string getHomeTown();
-    // int getDay();
-    // int getMonth();
-    // int getYear();
-    // float getSalary();
+    string getFullName();
+    float getSalary();
     void read(ifstream &ifs);
     void write(ofstream &ofs);
 };
@@ -74,51 +70,34 @@ int Employee::getCode()
 void Employee::setCode(int _code)
 {
     this->code = _code;
+}
 
-    // string Employee::getFullName()
-    // {
+string Employee::getFullName()
+{
+    return this->fullName;
+}
 
-    // string Employee::getHomeTown()
-    // {
-    //     return this->homeTown;
-    // }
+float Employee::getSalary()
+{
+    return this->salaryAmountInDollar;
+}
 
-    // int Employee::getDay()
-    // {
-    //     return this->day;
-    // }
+void Employee::read(ifstream &ifs)
+{
+    string s;
+    ifs >> this->code;
+    getline(ifs, s);
+    getline(ifs, this->fullName);
+    getline(ifs, this->homeTown);
+    ifs >> this->day >> this->month >> this->year;
+    ifs >> this->salaryAmountInDollar;
+}
 
-    // int Employee::getMonth()
-    // {
-    //     return this->month;
-    // }
-
-    // int Employee::getYear()
-    // {
-    //     return this->year;
-    // }
-
-    // float Employee::getSalary()
-    // {
-    //     return this->salaryAmountInDollar;
-    // }
-
-    void Employee::read(ifstream & ifs)
-    {
-        string s;
-        ifs >> this->code;
-        getline(ifs, s); // lấy kí tự '\n'
-        getline(ifs, this->fullName);
-        getline(ifs, this->homeTown);
-        ifs >> this->day >> this->month >> this->year;
-    }
-
-    void Employee::write(ofstream & ofs)
-    {
-
-        ofs << this->homeTown << endl;
-        ofs << this->day << endl;
-        ofs << this->month << endl;
-        ofs << this->year << endl;
-        ofs << this->salaryAmountInDollar << endl;
-    }
+void Employee::write(ofstream &ofs)
+{
+    ofs << this->code << ", ";
+    ofs << this->fullName << ", ";
+    ofs << this->homeTown << ", ";
+    ofs << this->day << " " << this->month << " " << this->year << ", ";
+    ofs << this->salaryAmountInDollar;
+}

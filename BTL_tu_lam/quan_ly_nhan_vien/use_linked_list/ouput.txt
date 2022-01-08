@@ -1,0 +1,3 @@
+1, Hoang Gia Kiet, Dong Nai, 23 9 2003, 1000
+2, Phan Ngoc Nhu Tranh, Tien Giang, 8 10 2003, 4000
+3, Pham Thi Diem Quynh, Quang Ngai, 16 3 2003, 2000
