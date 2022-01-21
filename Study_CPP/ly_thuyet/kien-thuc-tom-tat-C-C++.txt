@@ -157,6 +157,25 @@
 - Vùng nhớ này là vùng nhớ không do CPU quản lí, mà do người lập trình quản lí vùng nhớ này. 
 - Khi vùng lập trình cấp phát cái biến để sử dụng trong cái vùng nhớ này - con trỏ, thì sau khi sử dụng xong - phải có cơ chế giải phóng vùng nhớ đó 
 
+================= Con trỏ hằng (pointer to const value) ==========
+Con trỏ hằng (Pointer to const value) là con trỏ trỏ đến vùng dữ liệu hằng. Ta không thể thay đổi giá trị mà nó đang trỏ đến. Nhưng có thể cho nó trỏ đến một địa chỉ vùng nhớ khác.
+=> Nghĩa là : giá trị mà nó trỏ đến là hằng (không được thay đổi giá trị)
+
+	int value = 10;
+	const int *ptr = &value; // ptr là con trỏ hằng
+	value = 20; // ok
+	*ptr = 20; // lỗi, vì ptr là con trỏ hằng
+
+================= Hằng con trỏ (const pointers) ==========
+Ngược lại với con trỏ hằng, hằng con trỏ (const pointers) là con trỏ không thể thay đổi được địa chỉ vùng nhớ mà nó lưu trữ, nhưng có thể thay đổi được giá trị mà nó trỏ đến.
+=> Nghĩa là : địa chỉ mà nó trỏ đến là hằng (không được thay đổi địa chỉ)
+
+	int value1 = 10;
+	int value2 = 20;
+	
+	int *const ptr = &value1; // ptr là hằng con trỏ
+	ptr = &value2; // lỗi biên dịch, địa chỉ hằng con trỏ trỏ đến không thể thay đổi
+
 
 =================Khái niệm con trỏ - biến con trỏ
 
