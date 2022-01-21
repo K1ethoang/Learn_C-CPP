@@ -690,11 +690,14 @@ wb+	Mở file cho phép cả đọc và ghi ở dạng nhị phân.	Nếu file �
 a+	Mở file cho phép đọc và ghi “append”. -Nếu file không tồn tại, nó sẽ được tạo tự động.
 ab+	Mở file cho phép đọc và ghi “append” ở dạng nhị phân. -	Nếu file không tồn tại, nó sẽ được tạo tự động.
 
-
-- Mở file: fopen("<đường dẫn đến file>", <mode>)
-
+------ file văn bản --------
+- Mở file: fopen("<đường dẫn đến file>", "<mode>")
+- Ghi file: fprintf(), fscanf()
 - Đóng file: fclose(<file cần đóng>)
 
+------ file nhị phân --------
+- Ghi file: fwrite(address_data,size_data,numbers_data,pointer_to_file)
+- Đọc file: fread( , , , )
 
 
 ---------- C++ ------------------
@@ -708,7 +711,7 @@ ostream: đây là lớp - có chức năng hỗ trợ chúng ta GHI dữ liệu
 
 =============== Các chế độ mở tệp tin file
 
-ios::in		Mở một tệp tin để đọc
+ios::in		        Mở một tệp tin để đọc
 ios::out		Mở một tệp tin có sẵn để in
 ios::app		Mở một tệp tin có sẵn để thêm dữ liệu vào cuối tệp
 ios::ate		Mở một tệp tin và đặt con trỏ vào cuối tệp
