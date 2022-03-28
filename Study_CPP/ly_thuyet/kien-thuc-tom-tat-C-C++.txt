@@ -817,5 +817,15 @@ Lưu ý cả 2 trường hợp trên: Nếu vị trí truyền vào không hợp
 15/ swap(<vector x>): Hoán đổi các phần tử của vector hiện tại & vector x cho nhau.
 
 
+		[------------------- ENUM -------------------]
+
+		[------------------- UNION -------------------]
+
+
+
+
+
+
+
 
 
