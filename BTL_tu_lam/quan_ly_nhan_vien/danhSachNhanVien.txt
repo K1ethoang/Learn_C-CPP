@@ -1,4 +1,4 @@
 Ma so |Ho        |Ten       |Ngay sinh |Noi sinh       |Luong     
-2     |Phan      |Tranh     |8 10 2003 |Tien Giang     |10000     
-1     |Pham      |Quynh     |16 3 2003 |Quang Ngai     |3000      
+2     |Hoang     |Gia     |23 9 2003 |Dong Nai     |10000     
+1     |Hoang     |Gia     |23 9 2003 |Dong Nai     |3000      
 3     |Hoang     |Gia       |23 9 2003 |Dong Nai       |1000      
